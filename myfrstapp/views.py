@@ -16,14 +16,15 @@ def principal(request):
 
 def info(request):
 
-    url=parse_url()
-    calcular_puntuacion()
     return (render(request, 'info.html'))
 @csrf_exempt
 def analyze(request):
+    #recibimos la url del proyecto
     if request.method=='POST':
-        print('yaaas')
-        calcular_puntuacion()
+        url1=request.POST['url']
+        url=parse_url(url1)
+        calcular_puntuacion(url)
+        
     return (render(request, 'analyze.html'))
 
 def contact(request):
@@ -39,17 +40,19 @@ def advanced(request):
     return HttpResponse("Info de la pagina")
 
 #funciones auxiliares
-def parse_url():
-    #url=https://snap.berkeley.edu/project?user=pauliss_826&project=intento1
-    url= 'https://snap.berkeley.edu/projects/pauliss_826/intento1'
+def parse_url(url):
+    s=url.split('=')
+    s1='https://snap.berkeley.edu/projects/'
+    s2=s[1].split('&')[0]
+    s3=s[2]
+    url=s1+s2+'/'+s3
+    print(url)
     return url
 
-def calcular_puntuacion():
+def calcular_puntuacion(url):
     #parse_xml('templates/intento1.xml')
     #parse_xml('https://snap.berkeley.edu/projects/msanch9474/AIR%20HOCKEY%20Final')
-
-    #url= 'https://snap.berkeley.edu/projects/pauliss_826/intento1'
-    parse_xml('https://snap.berkeley.edu/projects/pauliss_826/intento1')
+    parse_xml(url)
     print('condicionales ' + str(puntuacion_condicionales()))
     print('sincronizacion ' + str(puntuacion_sincronizacion()))
     print('control de flujo ' + str(control_flujo()))

@@ -4,10 +4,17 @@
 {% block cuerpo %}
 
 {% csrf_token %}
+<div class="wrapper">
+  <div class="box2">
+      <div class="title">
+        <h2>Enter your url</h2>
+      </div>
+      <form action="/analyze" method="post">
+        <label for="url"></label>
+        <input  name="url"><br>
+        <input type="submit" value="Analyze" class="button">
+      </form>
+  </div>
+</div>
 
-<form action="/analyze" method="post">
-    <label for="team_name">Enter name: </label>
-    <input  name="username"><br>
-    <input type="submit" value="OK">
-</form>
 {% endblock cuerpo %}

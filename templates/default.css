@@ -2,7 +2,7 @@
 	{
 		height: 100%;
 	}
-	
+
 	body
 	{
 		margin: 0px;
@@ -11,52 +11,52 @@
 		font-family: 'Questrial', sans-serif;
 		font-size: 12pt;
 	}
-	
-	
+
+
 	h1, h2, h3
 	{
 		margin: 0;
 		padding: 0;
 		color: #404040;
 	}
-	
+
 	p, ol, ul
 	{
 		margin-top: 0;
 	}
-	
+
 	ol, ul
 	{
 		padding: 0;
 		list-style: none;
 	}
-	
+
 	p
 	{
 		line-height: 180%;
 	}
-	
+
 	strong
 	{
 	}
-	
+
 	a
 	{
 		color: #E85D4B;
 	}
-	
+
 	a:hover
 	{
 		text-decoration: none;
 	}
-	
+
 
 	.container
 	{
 		margin: 0px auto;
 		width: 1200px;
 	}
-	
+
 
 
 /*********************************************************************************/
@@ -75,7 +75,7 @@
 		font-size: 1em;
 		color: #FFF;
 	}
-	
+
 	.button:before
 	{
 		display: inline-block;
@@ -88,11 +88,11 @@
 		text-align: center;
 		color: #272925;
 	}
-	
+
 	.button-small
 	{
 	}
-		
+
 
 /*********************************************************************************/
 /* Header                                                                        */
@@ -117,22 +117,22 @@
 	#logo
 	{
 	}
-	
+
 	#logo h1
 	{
 		display: inline-block;
 		margin-bottom: 0.20em;
 		font-size: 3.5em;
 	}
-	
+
 	#logo a
 	{
 		text-decoration: none;
 		color: #F67C78;
 	}
-	
-	
-	
+
+
+
 
 /*********************************************************************************/
 /* Menu                                                                          */
@@ -145,19 +145,19 @@
 		top: 0;
 		border-left: 1px solid rgba(0,0,0,.2);
 	}
-	
+
 	#menu ul
 	{
 		display: inline-block;
 		padding: 1em 2em 0em 2em;
 		text-align: center;
 	}
-	
+
 	#menu li
 	{
 		display: inline-block;
 	}
-	
+
 	#menu li a, #menu li span
 	{
 		display: inline-block;
@@ -168,17 +168,17 @@
 		text-transform: uppercase;
 		outline: 0;
 	}
-	
+
 	#menu li:hover a, #menu li.active a, #menu li.active span
 	{
 	}
-	
+
 	#menu .current_page_item a
 	{
 		background: #F67C78;
 		color: #FFF;
 	}
-	
+
 
 /*********************************************************************************/
 /* Banner                                                                        */
@@ -197,10 +197,10 @@
 
 	.wrapper
 	{
-		justify-content: center; 
+		justify-content: center;
     		align-items: center;
-		display: flex; 
-		flex-direction: row; 
+		display: flex;
+		flex-direction: row;
 		overflow: hidden;
 		padding: 5em 0em 5em 0em;
 		background: #FFF;
@@ -217,8 +217,8 @@
 		background: #F3F3F3;
 		padding: 5em 0em;
 	}
-	
-	
+
+
 	.box1
 	{
 		background-color:  #c5faf6 ;
@@ -243,7 +243,7 @@
 		width: 300px;
 		height: 150px;
 	}
-	
+
 /*********************************************************************************/
 /* Welcome                                                                       */
 /*********************************************************************************/
@@ -256,17 +256,17 @@
 		text-align: center;
 		color: rgba(0,0,0,0.6);
 	}
-	
+
 	#welcome .content
 	{
 		padding: 0em 8em;
 	}
-	
+
 	#welcome .title h2
 	{
 		color: rgba(0,0,0,0.8);
 	}
-	
+
 	#welcome a,
 	#welcome strong
 	{
@@ -287,7 +287,7 @@
 		padding-right: 100px;
 		border-right: 1px solid rgba(0,0,0,.1);
 	}
-	
+
 
 
 /*********************************************************************************/
@@ -298,22 +298,20 @@
 	{
 		background: #f2f77b;
 		overflow: hidden;
-		padding: 5em 0em;
+		padding: 3em 0em;
 		border-top: 1px solid rgba(255,255,255,0.08);
 		text-align: center;
 	}
-	
+
 	#copyright p
 	{
 		letter-spacing: 1px;
 		font-size: 0.90em;
 		color: black;
 	}
-	
+
 	#copyright a
 	{
 		text-decoration: none;
 		color: rgba(255,255,255,0.8);
 	}
-
-
