@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+{% csrf_token %}
+
+<form action="/analyze" method="post">
+    <label for="team_name">Enter name: </label>
+    <input  name="username"><br>
+    <input type="submit" value="OK">
+</form>
+{% endblock cuerpo %}

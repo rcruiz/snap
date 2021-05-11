@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+
+<div id="banner" class="container"><img src="{%static 'images/snap-byob.png' %}" width="1200" height="400" alt="" /></div>
+<div class="wrapper">
+		<div class="box1">
+			<div class="title">
+				<h2>Basic level</h2>
+			</div>
+			<p>BLABLABALABALABA</p>
+			<a href="/basic" class="button">Learn More</a> </div>
+		<div class="box2">
+			<div class="title">
+				<h2>Intermediate level</h2>
+			</div>
+			<p>BLABLABALABA</p>
+			<a href="/intermediate" class="button">Learn More</a> </div>
+		<div class="box3">
+			<div class="title">
+				<h2>Advanced level</h2>
+			</div>
+			<p>BLABLABLA</p>
+			<a href="/advanced" class="button">Learn More</a> </div>
+	</div>
+
+{% endblock cuerpo %}
