@@ -5,6 +5,12 @@ from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+
 
 
 #variables globales
@@ -24,7 +30,7 @@ def analyze(request):
         url1=request.POST['url']
         url=parse_url(url1)
         calcular_puntuacion(url)
-        
+
     return (render(request, 'analyze.html'))
 
 def contact(request):
@@ -38,6 +44,39 @@ def intermediate(request):
 
 def advanced(request):
     return HttpResponse("Info de la pagina")
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+@csrf_exempt
+def login_user(request):
+    if request.method=='POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user=authenticate(username=username,password=password)
+        if user !=None:
+            login(request,user)
+        return HttpResponseRedirect('/')
+    else:
+        messages.add_message(request, messages.ERROR, "Incorrect user or password")
+    return render(request,'login.html')
+@csrf_exempt
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+
 
 #funciones auxiliares
 def parse_url(url):

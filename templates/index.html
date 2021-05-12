@@ -23,10 +23,24 @@
 				<li><a href="/info" accesskey="2" title="">About us</a></li>
 				<li><a href="/analyze" accesskey="2" title="">Analyze</a></li>
 				<li><a href="/contact" accesskey="3" title="">Contact Us</a></li>
+				<li><a href="/login" accesskey="3" title="">Sign in</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
+
+{% csrf_token %}
+{% if user.is_authenticated %}
+	<div class="wrapperlogout">
+	  <div class="box4">
+	             <p class="user">Usuario: {{ user.username }}</p>
+	             <form class="logout" method="post" action="/logout">
+	                 <input type="submit" value="Logout">
+	             </form>
+		</div>
+	</div>
+
+{% endif %}
 
 
 	{% block cuerpo %}

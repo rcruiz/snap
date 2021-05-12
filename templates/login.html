@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+{% csrf_token %}
+
+
+{% if user.is_authenticated %}
+  <p> AQUI VAN LOS PROYECTOS GUARDADOS DE LOS NIÑOOOOS</p>
+
+{% else %}
+  <div class="wrapper">
+    <div class="box2">
+      <div id="usuarios">
+         <form class="login" method="post" action="/login">
+             <label for="username">Usuario: </label>
+             <input value="{{ form.id }}" name="username"><br>
+             <label for="password">Contraseña: </label>
+             <input value="{{ form.password }}" name="password" type="password"><br>
+             <input class="boton" type="submit" value="Login">
+             <a href="http://127.0.0.1:8000/signup">Hacerse una cuenta</a>
+         </form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock cuerpo %}
