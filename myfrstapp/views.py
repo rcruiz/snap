@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from myfrstapp.models import proyectos
 
 
 
@@ -30,10 +31,16 @@ def analyze(request):
         url1=request.POST['url']
         url=parse_url(url1)
         calcular_puntuacion(url)
+        if request.user.is_authenticated:
+            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url)
+            new_proyect.save()
 
     return (render(request, 'analyze.html'))
 
 def contact(request):
+
+    us=proyectos.objects.all()
+    print(us)
     return (render(request, 'contact.html'))
 
 def basic(request):
@@ -67,10 +74,17 @@ def login_user(request):
         user=authenticate(username=username,password=password)
         if user !=None:
             login(request,user)
-        return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/')
+        else:
+            #pensar algo
+            return HttpResponse('cntraseña incorrecta')
     else:
-        messages.add_message(request, messages.ERROR, "Incorrect user or password")
-    return render(request,'login.html')
+        if request.user.is_authenticated:
+            user_projects =  proyectos.objects.filter(usuario=request.user.username)
+            return render(request,'login.html',{'user_projects':user_projects})
+
+        return render(request,'login.html')
+
 @csrf_exempt
 def logout_user(request):
     logout(request)

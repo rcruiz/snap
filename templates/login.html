@@ -7,7 +7,10 @@
 
 
 {% if user.is_authenticated %}
-  <p> AQUI VAN LOS PROYECTOS GUARDADOS DE LOS NIÑOOOOS</p>
+  {% for project in user_projects %}
+     <p>EL identificador es: <strong>{{project.url_proyecto}}</strong></p>
+  {% endfor %}
+
 
 {% else %}
   <div class="wrapper">
