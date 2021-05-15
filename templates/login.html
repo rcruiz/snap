@@ -5,12 +5,19 @@
 
 {% csrf_token %}
 
-
 {% if user.is_authenticated %}
-  {% for project in user_projects %}
-     <p>EL identificador es: <strong>{{project.url_proyecto}}</strong></p>
-  {% endfor %}
 
+  <div class="wrapper">
+      <p>{{mensaje}}</p>
+    {% for project in user_projects %}
+        <clear>
+       <p>La url es: <strong>{{project.url_proyecto}}</strong></p>
+       <p> Su puntuación es:  </p>
+    {% endfor %}
+    {% if flag_url%}
+      <a href="http://127.0.0.1:8000/login"> Analyze your first project! </a>
+    {% endif %}
+  </div>
 
 {% else %}
   <div class="wrapper">

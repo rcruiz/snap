@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 
 {% block cuerpo %}
-
   <div class="wrapper">
     <div class="box5">
       <form method="post">
@@ -9,6 +8,7 @@
         {{ form.as_p }}
         <button type="submit">Sign up</button>
       </form>
+      <p>{{mensaje}}</p>
     </div>
   </div>
 {% endblock %}

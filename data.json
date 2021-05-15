@@ -3,549 +3,177 @@
         {
             "sprite": 1,
             "script": 1,
-            "block": "receiveMessage",
+            "block": "receiveGo",
             "num_block": 1
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "show",
+            "block": "up",
             "num_block": 2
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "gotoXY",
+            "block": "setHeading",
             "num_block": 3
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doWait",
+            "block": "gotoXY",
             "num_block": 4
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doUntil",
+            "block": "clear",
             "num_block": 5
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "reportTouchingObject",
+            "block": "hide",
             "num_block": 6
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doFaceTowards",
+            "block": "setColor",
             "num_block": 7
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "forward",
+            "block": "write",
             "num_block": 8
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "gotoXY",
+            "block": "doWait",
             "num_block": 9
         },
         {
             "sprite": 1,
-            "script": 2,
-            "block": "receiveGo",
+            "script": 1,
+            "block": "setSize",
             "num_block": 10
         },
         {
             "sprite": 1,
-            "script": 2,
-            "block": "hide",
+            "script": 1,
+            "block": "up",
             "num_block": 11
         },
         {
             "sprite": 1,
-            "script": 2,
-            "block": "gotoXY",
+            "script": 1,
+            "block": "clear",
             "num_block": 12
         },
         {
             "sprite": 1,
-            "script": 3,
-            "block": "receiveMessage",
+            "script": 1,
+            "block": "hide",
             "num_block": 13
         },
         {
             "sprite": 1,
-            "script": 3,
-            "block": "forward",
+            "script": 1,
+            "block": "gotoXY",
             "num_block": 14
         },
         {
             "sprite": 1,
-            "script": 3,
-            "block": "doWaitUntil",
+            "script": 1,
+            "block": "setHeading",
             "num_block": 15
         },
         {
             "sprite": 1,
-            "script": 3,
-            "block": "reportAspect",
+            "script": 1,
+            "block": "doAsk",
             "num_block": 16
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "receiveMessage",
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
             "num_block": 17
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "show",
+            "sprite": 1,
+            "script": 1,
+            "block": "setColor",
             "num_block": 18
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "gotoXY",
+            "sprite": 1,
+            "script": 1,
+            "block": "down",
             "num_block": 19
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "doThinkFor",
+            "sprite": 1,
+            "script": 1,
+            "block": "doRepeat",
             "num_block": 20
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "doUntil",
+            "sprite": 1,
+            "script": 1,
+            "block": "reportSum",
             "num_block": 21
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportOr",
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
             "num_block": 22
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportTouchingObject",
+            "sprite": 1,
+            "script": 1,
+            "block": "forward",
             "num_block": 23
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportTouchingObject",
-            "num_block": 24
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "show",
+            "sprite": 1,
+            "script": 1,
+            "block": "turn",
             "num_block": 25
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "doIf",
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
             "num_block": 26
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportOr",
+            "sprite": 1,
+            "script": 1,
+            "block": "doChangeVar",
             "num_block": 27
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportKeyPressed",
+            "sprite": 1,
+            "script": 1,
+            "block": "changePenHSVA",
             "num_block": 28
         },
         {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportKeyPressed",
+            "sprite": 1,
+            "script": 1,
+            "block": "changeSize",
             "num_block": 29
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeXPosition",
-            "num_block": 30
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "doIf",
-            "num_block": 31
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportTouchingColor",
-            "num_block": 32
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeXPosition",
-            "num_block": 33
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeXPosition",
-            "num_block": 34
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "doIf",
-            "num_block": 35
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportTouchingColor",
-            "num_block": 36
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeXPosition",
-            "num_block": 37
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeYPosition",
-            "num_block": 38
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "doIf",
-            "num_block": 39
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportTouchingColor",
-            "num_block": 40
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeYPosition",
-            "num_block": 41
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeYPosition",
-            "num_block": 42
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "doIf",
-            "num_block": 43
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "reportTouchingColor",
-            "num_block": 44
-        },
-        {
-            "sprite": 2,
-            "script": 4,
-            "block": "changeYPosition",
-            "num_block": 45
-        },
-        {
-            "sprite": 2,
-            "script": 5,
-            "block": "receiveGo",
-            "num_block": 46
-        },
-        {
-            "sprite": 2,
-            "script": 5,
-            "block": "doSwitchToCostume",
-            "num_block": 47
-        },
-        {
-            "sprite": 2,
-            "script": 5,
-            "block": "gotoXY",
-            "num_block": 48
-        },
-        {
-            "sprite": 2,
-            "script": 5,
-            "block": "setScale",
-            "num_block": 49
-        },
-        {
-            "sprite": 2,
-            "script": 5,
-            "block": "hide",
-            "num_block": 50
-        },
-        {
-            "sprite": 2,
-            "script": 6,
-            "block": "receiveCondition",
-            "num_block": 51
-        },
-        {
-            "sprite": 2,
-            "script": 6,
-            "block": "reportTouchingObject",
-            "num_block": 52
-        },
-        {
-            "sprite": 2,
-            "script": 6,
-            "block": "doBroadcast",
-            "num_block": 53
-        },
-        {
-            "sprite": 2,
-            "script": 7,
-            "block": "receiveCondition",
-            "num_block": 54
-        },
-        {
-            "sprite": 2,
-            "script": 7,
-            "block": "reportTouchingObject",
-            "num_block": 55
-        },
-        {
-            "sprite": 2,
-            "script": 7,
-            "block": "doBroadcast",
-            "num_block": 56
-        },
-        {
-            "sprite": 3,
-            "script": 8,
-            "block": "receiveGo",
-            "num_block": 57
-        },
-        {
-            "sprite": 3,
-            "script": 8,
-            "block": "hide",
-            "num_block": 58
-        },
-        {
-            "sprite": 3,
-            "script": 8,
-            "block": "setScale",
-            "num_block": 59
-        },
-        {
-            "sprite": 3,
-            "script": 8,
-            "block": "gotoXY",
-            "num_block": 60
-        },
-        {
-            "sprite": 3,
-            "script": 9,
-            "block": "receiveMessage",
-            "num_block": 61
-        },
-        {
-            "sprite": 3,
-            "script": 9,
-            "block": "show",
-            "num_block": 62
-        },
-        {
-            "sprite": 4,
-            "script": 10,
-            "block": "receiveGo",
-            "num_block": 63
-        },
-        {
-            "sprite": 4,
-            "script": 10,
-            "block": "gotoXY",
-            "num_block": 64
-        },
-        {
-            "sprite": 5,
-            "script": 11,
-            "block": "receiveMessage",
-            "num_block": 65
-        },
-        {
-            "sprite": 5,
-            "script": 11,
-            "block": "doSwitchToCostume",
-            "num_block": 66
-        },
-        {
-            "sprite": 5,
-            "script": 11,
-            "block": "gotoXY",
-            "num_block": 67
-        },
-        {
-            "sprite": 5,
-            "script": 11,
-            "block": "show",
-            "num_block": 68
-        },
-        {
-            "sprite": 5,
-            "script": 12,
-            "block": "receiveGo",
-            "num_block": 69
-        },
-        {
-            "sprite": 5,
-            "script": 12,
-            "block": "hide",
-            "num_block": 70
-        },
-        {
-            "sprite": 5,
-            "script": 13,
-            "block": "receiveMessage",
-            "num_block": 71
-        },
-        {
-            "sprite": 5,
-            "script": 13,
-            "block": "hide",
-            "num_block": 72
-        },
-        {
-            "sprite": 5,
-            "script": 14,
-            "block": "receiveMessage",
-            "num_block": 73
-        },
-        {
-            "sprite": 5,
-            "script": 14,
-            "block": "doSwitchToCostume",
-            "num_block": 74
-        },
-        {
-            "sprite": 5,
-            "script": 14,
-            "block": "gotoXY",
-            "num_block": 75
-        },
-        {
-            "sprite": 5,
-            "script": 14,
-            "block": "show",
-            "num_block": 76
-        },
-        {
-            "sprite": 5,
-            "script": 15,
-            "block": "receiveInteraction",
-            "num_block": 77
-        },
-        {
-            "sprite": 5,
-            "script": 15,
-            "block": "hide",
-            "num_block": 78
-        },
-        {
-            "sprite": 5,
-            "script": 15,
-            "block": "doBroadcast",
-            "num_block": 79
-        },
-        {
-            "sprite": 5,
-            "script": 16,
-            "block": "receiveMessage",
-            "num_block": 80
-        },
-        {
-            "sprite": 5,
-            "script": 16,
-            "block": "hide",
-            "num_block": 81
-        },
-        {
-            "sprite": 6,
-            "script": 17,
-            "block": "receiveGo",
-            "num_block": 82
-        },
-        {
-            "sprite": 6,
-            "script": 17,
-            "block": "doBroadcast",
-            "num_block": 83
-        },
-        {
-            "sprite": 6,
-            "script": 17,
-            "block": "gotoXY",
-            "num_block": 84
-        },
-        {
-            "sprite": 6,
-            "script": 17,
-            "block": "show",
-            "num_block": 85
-        },
-        {
-            "sprite": 6,
-            "script": 17,
-            "block": "doGlide",
-            "num_block": 86
-        },
-        {
-            "sprite": 6,
-            "script": 18,
-            "block": "receiveInteraction",
-            "num_block": 87
-        },
-        {
-            "sprite": 6,
-            "script": 18,
-            "block": "hide",
-            "num_block": 88
-        },
-        {
-            "sprite": 6,
-            "script": 18,
-            "block": "doBroadcast",
-            "num_block": 89
         }
     ],
-    "variables": [],
-    "block-definition": [
+    "variables": [
         {
-            "name": "when I receive",
-            "number": 1
+            "variable": "passos",
+            "number_var": 1
         }
     ],
-    "when I receive": [
-        {
-            "name": "when I receive",
-            "block": "doReport"
-        }
-    ]
+    "block-definition": []
 }

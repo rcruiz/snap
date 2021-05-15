@@ -11,10 +11,12 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from myfrstapp.models import proyectos
+from statistics import mean
 
 
 
 #variables globales
+
 # Create your views here.
 
 def principal(request):
@@ -53,6 +55,9 @@ def advanced(request):
     return HttpResponse("Info de la pagina")
 
 def signup(request):
+
+    mensaje=''
+    #user se ha registrado (ha dado al boton)
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -61,36 +66,52 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/login')
+        else:
+            mensaje='Please enter correctly your account and password. Try again!'
+            return render(request, 'signup.html', {'form': form,'mensaje': mensaje})
+
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+        return render(request, 'signup.html', {'form': form,'mensaje': mensaje})
 
 @csrf_exempt
 def login_user(request):
+    mensaje=''
+    flag_url=False
     if request.method=='POST':
         username=request.POST['username']
         password=request.POST['password']
         user=authenticate(username=username,password=password)
         if user !=None:
             login(request,user)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/login')
         else:
             #pensar algo
             return HttpResponse('cntraseña incorrecta')
     else:
         if request.user.is_authenticated:
             user_projects =  proyectos.objects.filter(usuario=request.user.username)
-            return render(request,'login.html',{'user_projects':user_projects})
+            if not user_projects:
+                mensaje='You havent analyzed any project yet!'
+                flag_url= True
 
-        return render(request,'login.html')
+        return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
 
 @csrf_exempt
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-
+def switch_puntuacion(media):
+    if media <0.5:
+        return 0
+    elif media <1.5:
+        return 1
+    elif media <2.5:
+        return 2
+    else:
+        return 3
 
 #funciones auxiliares
 def parse_url(url):
@@ -106,13 +127,24 @@ def calcular_puntuacion(url):
     #parse_xml('templates/intento1.xml')
     #parse_xml('https://snap.berkeley.edu/projects/msanch9474/AIR%20HOCKEY%20Final')
     parse_xml(url)
-    print('condicionales ' + str(puntuacion_condicionales()))
-    print('sincronizacion ' + str(puntuacion_sincronizacion()))
-    print('control de flujo ' + str(control_flujo()))
-    print('abstraccion ' + str(abstraccion()))
-    print('paralelismo ' + str(paralelismo()))
-    print('categorias ' + str(categorias()))
-    print('interactividad ' + str(puntuacion_interactividad()))
+    condicionales =puntuacion_condicionales()
+    sincronizacion=puntuacion_sincronizacion()
+    flujo= control_flujo()
+    abst=abstraccion()
+    para=paralelismo()
+    categ=categorias()
+    interactividad=puntuacion_interactividad()
+    print('condicionales ' + str(condicionales))
+    print('sincronizacion ' + str(sincronizacion))
+    print('control de flujo ' + str(flujo))
+    print('abstraccion ' + str(abst))
+    print('paralelismo ' + str(para))
+    print('categorias ' + str(categ))
+    print('interactividad ' + str(interactividad))
+    data=(condicionales,sincronizacion,flujo,abst,para,categ,interactividad)
+    media=mean(data)
+    print(media)
+    print(switch_puntuacion(media))
 
 #mira si hay más de dos bloques en 1 script para control de flujo
 def blocks_script(data):
