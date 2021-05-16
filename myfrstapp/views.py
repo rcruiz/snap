@@ -14,6 +14,12 @@ from myfrstapp.models import proyectos
 from statistics import mean
 
 
+switch_nivel= {
+    0:'No tienes nivel',
+    1:'Nivel básico',
+    2:'Nivel intermedio',
+    3:'NIvel avanzado'
+}
 
 #variables globales
 
@@ -32,9 +38,9 @@ def analyze(request):
     if request.method=='POST':
         url1=request.POST['url']
         url=parse_url(url1)
-        calcular_puntuacion(url)
+        puntuacion = calcular_puntuacion(url)
         if request.user.is_authenticated:
-            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url)
+            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url, nivel= switch_nivel.get(puntuacion))
             new_proyect.save()
 
     return (render(request, 'analyze.html'))
@@ -79,6 +85,7 @@ def signup(request):
 def login_user(request):
     mensaje=''
     flag_url=False
+    user_projects= []
     if request.method=='POST':
         username=request.POST['username']
         password=request.POST['password']
@@ -145,6 +152,8 @@ def calcular_puntuacion(url):
     media=mean(data)
     print(media)
     print(switch_puntuacion(media))
+    puntuacion = switch_puntuacion(media)
+    return puntuacion
 
 #mira si hay más de dos bloques en 1 script para control de flujo
 def blocks_script(data):
@@ -187,7 +196,7 @@ def paralelismo():
     elif n_sprite>=2 and n_script >=1:
         med = True
 
-    #falta hacer diccionario de esto
+    #falta hacer diccionario de esto :(
     for element in data['sprites']:
         if (element['block'] == 'receiveGo' or element['block'] == 'receiveKey')  and basic:
             puntuacion_bajo = 1
