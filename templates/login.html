@@ -3,38 +3,48 @@
 
 {% block cuerpo %}
 
-{% csrf_token %}
+  {% csrf_token %}
 
-{% if user.is_authenticated %}
+  {% if user.is_authenticated %}
 
-  <div class="wrapper">
-      <p>{{mensaje}}</p>
-    {% for project in user_projects %}
+      <div class="wrapper">
+
+      {% if flag_url%}
         <clear>
-       <p>La url es: <strong>{{project.url_proyecto}}</strong></p>
-       <p> Su puntuación es:  </p>
-    {% endfor %}
-    {% if flag_url%}
-      <clear>
-      <a href="http://127.0.0.1:8000/analyze"> Analyze your first project! </a>
-    {% endif %}
-  </div>
+        <a href="http://127.0.0.1:8000/analyze"> Analyze your first project! </a>
+      {% else %}
+        <div class="divTable cinereousTable">
+        <div class="divTableHeading">
+        <div class="divTableRow">
+        <div class="divTableHead">Url del proyecto</div>
+        <div class="divTableHead">Nivel</div>
+        </div>
+        </div>
+        <div class="divTableBody">
+          {% for project in user_projects %}
+            <div class="divTableRow">
+              <div class="divTableCell">{{project.url_proyecto}}</div><div class="divTableCell">{{project.nivel}}</div></div>
+          {% endfor %}
+        </div>
+        </div>
+      {% endif %}
+    </div>
 
-{% else %}
-  <div class="wrapper">
-    <div class="box2">
-      <div id="usuarios">
-         <form class="login" method="post" action="/login">
-             <label for="username">Usuario: </label>
-             <input value="{{ form.id }}" name="username"><br>
-             <label for="password">Contraseña: </label>
-             <input value="{{ form.password }}" name="password" type="password"><br>
-             <input class="boton" type="submit" value="Login">
-             <a href="http://127.0.0.1:8000/signup">Hacerse una cuenta</a>
-         </form>
+  {% else %}
+    <div class="wrapper">
+      <div class="box2">
+        <div id="usuarios">
+           <form class="login" method="post" action="/login">
+               <label for="username">Usuario: </label>
+               <input value="{{ form.id }}" name="username"><br>
+               <label for="password">Contraseña: </label>
+               <input value="{{ form.password }}" name="password" type="password"><br>
+               <input class="boton" type="submit" value="Login">
+               <a href="http://127.0.0.1:8000/signup">Hacerse una cuenta</a>
+           </form>
+        </div>
       </div>
     </div>
-  </div>
-{% endif %}
+  {% endif %}
 
 {% endblock cuerpo %}

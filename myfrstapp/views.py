@@ -40,7 +40,7 @@ def analyze(request):
         url=parse_url(url1)
         puntuacion = calcular_puntuacion(url)
         if request.user.is_authenticated:
-            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url, nivel= switch_nivel.get(puntuacion))
+            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= switch_nivel.get(puntuacion))
             new_proyect.save()
 
     return (render(request, 'analyze.html'))
