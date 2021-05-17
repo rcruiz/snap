@@ -21,6 +21,32 @@ switch_nivel= {
     3:'NIvel avanzado'
 }
 
+switch_interactividad= {
+    'receiveGo':1,
+    'receiveKey':1,
+    'receiveInteraction':2,
+    'reportTouchingObject':2,
+    'reportKeyPressed':2,
+    'doAsk':3,
+    'reportTouchingObject':2,
+    'reportTouchingColor':3,
+    'reportColorIsTouchingColor':3,
+    'reportMouseDown':3,
+    'reportVideo':3,
+    'reportGlobalFlag':3,
+    'reportAudio':3,
+}
+
+switch_condicionales = {
+    'doIf':1,
+    'doIfElse':2,
+    'reportIfElse':2,
+    'reportAnd':3,
+    'reportOr':3,
+    'reportNot':3
+}
+
+
 #variables globales
 
 # Create your views here.
@@ -52,13 +78,13 @@ def contact(request):
     return (render(request, 'contact.html'))
 
 def basic(request):
-    return HttpResponse("Info de la pagina")
+    return (render(request, 'basic.html'))
 
 def intermediate(request):
-    return HttpResponse("Info de la pagina")
+    return (render(request, 'intermediate.html'))
 
 def advanced(request):
-    return HttpResponse("Info de la pagina")
+    return (render(request, 'advanced.html'))
 
 def signup(request):
 
@@ -95,7 +121,7 @@ def login_user(request):
             return HttpResponseRedirect('/login')
         else:
             #pensar algo
-            return HttpResponse('cntraseña incorrecta')
+            return HttpResponse('contraseña incorrecta')
     else:
         if request.user.is_authenticated:
             user_projects =  proyectos.objects.filter(usuario=request.user.username)
@@ -110,6 +136,8 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+#funciones auxiliares
+
 def switch_puntuacion(media):
     if media <0.5:
         return 0
@@ -120,7 +148,6 @@ def switch_puntuacion(media):
     else:
         return 3
 
-#funciones auxiliares
 def parse_url(url):
     s=url.split('=')
     s1='https://snap.berkeley.edu/projects/'
@@ -131,8 +158,6 @@ def parse_url(url):
     return url
 
 def calcular_puntuacion(url):
-    #parse_xml('templates/intento1.xml')
-    #parse_xml('https://snap.berkeley.edu/projects/msanch9474/AIR%20HOCKEY%20Final')
     parse_xml(url)
     condicionales =puntuacion_condicionales()
     sincronizacion=puntuacion_sincronizacion()
@@ -179,7 +204,7 @@ def number_sprite(data):
 
 def paralelismo():
 
-    #NO COMPRUEBO QUE RECIEVE ESTEN EN LOS DOS SPRITES...
+    #NO COMPRUEBO QUE RECIEVE ESTEN EN LOS DOS SPRITES... ????
     puntuacion_bajo = 0
     puntuacion_medio = 0
     puntuacion_avanzado = 0
@@ -190,13 +215,12 @@ def paralelismo():
     #calculamos los scripts y sprites
     n_script = number_script(data)
     n_sprite = number_sprite(data)
-
+    #primera condicion tabla
     if  n_sprite == 1 and n_script >=2:
         basic =True
     elif n_sprite>=2 and n_script >=1:
         med = True
-
-    #falta hacer diccionario de esto :(
+    #segunda condicion tabla
     for element in data['sprites']:
         if (element['block'] == 'receiveGo' or element['block'] == 'receiveKey')  and basic:
             puntuacion_bajo = 1
@@ -215,23 +239,15 @@ def puntuacion_condicionales():
     with open('data.json') as file:
         data = json.load(file)
     #creamos un switch que nos de la  puntuación correspondiente
-    switch_condicionales = {
-        'doIf':1,
-        'doIfElse':2,
-        'reportIfElse':2,
-        'reportAnd':3,
-        'reportOr':3,
-        'reportNot':3
-    }
-
     for element in data['sprites']:
         actual = switch_condicionales.get(element['block'])
         if actual!= None and mayor < actual :
             mayor = actual
             if mayor ==3:
+                #mayor puntuacion no hace falta buscar mas
                 break
-
     return mayor
+
 def puntuacion_representacion_datos():
 
     with open('data1.json') as file:
@@ -252,21 +268,6 @@ def puntuacion_interactividad():
     with open('data.json') as file:
         data = json.load(file)
     #creamos un switch que nos de la  puntuación correspondiente
-    switch_interactividad= {
-        'receiveGo':1,
-        'receiveKey':1,
-        'receiveInteraction':2,
-        'reportTouchingObject':2,
-        'reportKeyPressed':2,
-        'doAsk':3,
-        'reportTouchingObject':2,
-        'reportTouchingColor':3,
-        'reportColorIsTouchingColor':3,
-        'reportMouseDown':3,
-        'reportVideo':3,
-        'reportGlobalFlag':3,
-        'reportAudio':3,
-    }
 
     for element in data['sprites']:
         actual = switch_interactividad.get(element['block'])

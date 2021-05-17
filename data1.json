@@ -21,7 +21,7 @@
       "changeEffect": 1,
       "changeScale": 1,
       "setScale": 1,
-      "doSetVar": 1,
+      "doSetVar": 2,
       "doChangeVar": 1,
       "doShowVar": 2,
       "doHideVar": 2,

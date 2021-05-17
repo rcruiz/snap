@@ -3,7 +3,7 @@
   "turn": "motion",
   "turnLeft": "motion",
   "setHeading": "motion",
-  " doFaceTowards": "motion",
+  "doFaceTowards": "motion",
   "gotoXY": "motion",
   "doGoToObject": "motion",
   "doGlide": "motion",

@@ -23,7 +23,7 @@
         <div class="divTableBody">
           {% for project in user_projects %}
             <div class="divTableRow">
-              <div class="divTableCell">{{project.url_proyecto}}</div><div class="divTableCell">{{project.nivel}}</div></div>
+              <div class="divTableCell"><a href={{project.url_proyecto}}>{{project.url_proyecto}}</a></div><div class="divTableCell">{{project.nivel}}</div></div>
           {% endfor %}
         </div>
         </div>
