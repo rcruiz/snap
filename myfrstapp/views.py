@@ -18,7 +18,7 @@ switch_nivel= {
     0:'No tienes nivel',
     1:'Nivel básico',
     2:'Nivel intermedio',
-    3:'NIvel avanzado'
+    3:'Nivel avanzado'
 }
 
 switch_interactividad= {
@@ -65,11 +65,13 @@ def analyze(request):
         url1=request.POST['url']
         url=parse_url(url1)
         puntuacion = calcular_puntuacion(url)
+        level=switch_nivel.get(puntuacion)
         if request.user.is_authenticated:
-            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= switch_nivel.get(puntuacion))
+            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= level)
             new_proyect.save()
-
-    return (render(request, 'analyze.html'))
+        return(render(request, 'result.html',{'nivel':level}))
+    else:
+        return (render(request, 'analyze.html'))
 
 def contact(request):
 
@@ -175,8 +177,8 @@ def calcular_puntuacion(url):
     print('interactividad ' + str(interactividad))
     data=(condicionales,sincronizacion,flujo,abst,para,categ,interactividad)
     media=mean(data)
-    print(media)
-    print(switch_puntuacion(media))
+    print("La media es: " + str(media))
+    print("El nivel es " + str(switch_puntuacion(media)))
     puntuacion = switch_puntuacion(media)
     return puntuacion
 
@@ -449,6 +451,19 @@ def parse_xml(url):
 
                                         except:
                                                 self.inBlock = False
+                                elif name=='block':
+                                    self.inBlock = True
+                                    self.numberBlocks = self.numberBlocks + 1
+                                    try:
+                                        self.data['sprites'].append({
+                                            'sprite': self.numberSprites,
+                                            'script': self.numberScripts,
+                                            'block': attrs.getValue('s'),
+                                            'num_block':self.numberBlocks
+                                            })
+
+                                    except:
+                                            self.inBlock = False
 
 
                             elif name == 'blocks':
@@ -474,7 +489,7 @@ def parse_xml(url):
                                     self.inBlockCustom=True
                                     try:
                                         self.data[self.value].append({
-                                            'name': self.value,
+                                            #'name': self.value,
                                             'block': attrs.getValue('s'),
                                             })
                                     except:
@@ -515,11 +530,10 @@ def parse_xml(url):
                     elif self.inBlockDef:
                         if name == 'block':
                             self.inBlockCustom=True
-                            print("intentooo")
                             print(self.value)
                             try:
                                 self.data[self.value].append({
-                                    'name': self.value,
+                                    #'name': self.value,
                                     'block': attrs.getValue('s'),
                                     })
 
@@ -532,14 +546,13 @@ def parse_xml(url):
                 elif self.inVariables:
                     try:
                         value = attrs.getValue('name')
-                        print("hola" + value)
+                        print("variables" + value)
                         self.numberVariables=self.numberVariables+1
                         self.data['variables'].append({
                             'variable': value,
                             'number_var':self.numberVariables
                             })
 
-                        print(self.data)
                         self.inVariable = True
 
                     except:
@@ -553,6 +566,7 @@ def parse_xml(url):
                 self.inProject=False
                 with open('data.json', 'w') as file:
                     json.dump(self.data, file, indent=4)
+                print(self.data)
 
             elif self.inProject:
                 if name == 'stage':
@@ -592,6 +606,9 @@ def parse_xml(url):
                                 elif self.inScript or self.inScript2:
                                     if name == 'block':
                                             self.inBlock = False
+                                elif name=='block':
+
+                                        self.inBlock = False
                 elif name == 'blocks':
                     self.inBlocks = False
                 elif self.inBlocks:

@@ -9,10 +9,206 @@
         {
             "sprite": 1,
             "script": 1,
-            "block": "forward",
+            "block": "clear",
             "num_block": 2
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 3
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportNewList",
+            "num_block": 4
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doAsk",
+            "num_block": 5
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 6
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
+            "num_block": 7
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 10
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportNewList",
+            "num_block": 11
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doAsk",
+            "num_block": 12
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 13
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
+            "num_block": 14
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 17
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doForEach",
+            "num_block": 18
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doIf",
+            "num_block": 20
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportListContainsItem",
+            "num_block": 21
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doIf",
+            "num_block": 24
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportGreaterThan",
+            "num_block": 25
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 28
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "gotoXY",
+            "num_block": 30
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSayFor",
+            "num_block": 31
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportJoinWords",
+            "num_block": 32
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "setScale",
+            "num_block": 36
         }
     ],
-    "variables": [],
-    "block-definition": []
+    "variables": [
+        {
+            "variable": "Divisor2",
+            "number_var": 1
+        },
+        {
+            "variable": "N\u00famero1",
+            "number_var": 2
+        },
+        {
+            "variable": "N\u00famero2",
+            "number_var": 3
+        },
+        {
+            "variable": "MCD",
+            "number_var": 4
+        },
+        {
+            "variable": "Divisor1",
+            "number_var": 5
+        }
+    ],
+    "block-definition": [
+        {
+            "name": "Divisors N\u00famero %'numero' dins %'Divisors'",
+            "number": 1
+        }
+    ],
+    "Divisors N\u00famero %'numero' dins %'Divisors'": [
+        {
+            "block": "changePenHSVA"
+        },
+        {
+            "block": "doFor"
+        },
+        {
+            "block": "reportMonadic"
+        },
+        {
+            "block": "doIf"
+        },
+        {
+            "block": "reportEquals"
+        },
+        {
+            "block": "reportModulus"
+        },
+        {
+            "block": "doAddToList"
+        },
+        {
+            "block": "doGotoObject"
+        },
+        {
+            "block": "write"
+        },
+        {
+            "block": "doAddToList"
+        },
+        {
+            "block": "reportQuotient"
+        },
+        {
+            "block": "doGotoObject"
+        },
+        {
+            "block": "write"
+        },
+        {
+            "block": "reportQuotient"
+        }
+    ]
 }
