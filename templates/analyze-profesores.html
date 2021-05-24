@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+{% csrf_token %}
+<div class="wrapper">
+  <div class="box2">
+      <div class="title">
+        <h2>Enter your zip</h2>
+      </div>
+      <form action="/analyze" method="post">
+        <label for="url"></label>
+        <input  name="url"><br>
+        <input type="submit" value="Analyze" class="button">
+      </form>
+  </div>
+</div>
+
+{% endblock cuerpo %}

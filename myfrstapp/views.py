@@ -10,8 +10,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from myfrstapp.models import proyectos
+from myfrstapp.models import proyectos,tipo
 from statistics import mean
+
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 
 switch_nivel= {
@@ -48,7 +51,7 @@ switch_condicionales = {
 
 
 #variables globales
-
+user_tipo=''
 # Create your views here.
 
 def principal(request):
@@ -60,18 +63,49 @@ def info(request):
     return (render(request, 'info.html'))
 @csrf_exempt
 def analyze(request):
-    #recibimos la url del proyecto
-    if request.method=='POST':
-        url1=request.POST['url']
-        url=parse_url(url1)
-        puntuacion = calcular_puntuacion(url)
-        level=switch_nivel.get(puntuacion)
-        if request.user.is_authenticated:
-            new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= level)
-            new_proyect.save()
-        return(render(request, 'result.html',{'nivel':level}))
+    if request.user.is_authenticated:
+        #ver si eres profesor o NOOO
+        if request.method=='POST':
+            #si es alumno
+            if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
+                url1=request.POST['url']
+                url=parse_url(url1)
+                puntuacion = calcular_puntuacion(url)
+                level=switch_nivel.get(puntuacion)
+                new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= level)
+                new_proyect.save()
+                return(render(request, 'result.html',{'nivel':level}))
+            else:
+                #si es PROFESOR ZIPPPP
+                if request.method == 'POST' and request.FILES['myfile']:
+                    myfile = request.FILES['myfile']
+                    fs = FileSystemStorage()
+                    filename = fs.save(myfile.name, myfile)
+                    uploaded_file_url = fs.url(filename)
+                    return render(request, 'simple_upload.html', {'uploaded_file_url': uploaded_file_url})
+
+                return(render(request, 'simple_upload.html'))
+
+        else:
+
+            if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
+                return (render(request, 'analyze-estudiantes.html'))
+            else:
+
+                    #return (render(request, 'analyze-profesores.html'))
+
+                    return(render(request, 'simple_upload.html'))
+
     else:
-        return (render(request, 'analyze.html'))
+        #no estas logeado
+        if request.method=='POST':
+            url1=request.POST['url']
+            url=parse_url(url1)
+            puntuacion = calcular_puntuacion(url)
+            level=switch_nivel.get(puntuacion)
+            return(render(request, 'result.html',{'nivel':level}))
+        else:
+            return (render(request, 'analyze-estudiantes.html'))
 
 def contact(request):
 
@@ -88,26 +122,50 @@ def intermediate(request):
 def advanced(request):
     return (render(request, 'advanced.html'))
 
+@csrf_exempt
 def signup(request):
-
+    global user_tipo
     mensaje=''
-    #user se ha registrado (ha dado al boton)
     if request.method == 'POST':
+
         form = UserCreationForm(request.POST)
         if form.is_valid():
+            print('paso 3')
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            #guardamos el tipo de usuario
+            user_tipo=tipo(usuario=username, tipo_usuario=user_tipo)
+            user_tipo.save()
+
             return HttpResponseRedirect('/login')
         else:
-            mensaje='Please enter correctly your account and password. Try again!'
             return render(request, 'signup.html', {'form': form,'mensaje': mensaje})
 
+
     else:
+
         form = UserCreationForm()
+        print('paso 2')
         return render(request, 'signup.html', {'form': form,'mensaje': mensaje})
+
+
+@csrf_exempt
+def choose(request):
+
+    global user_tipo
+    if request.POST:
+        user_tipo= request.POST['tipo']
+        print('paso 1')
+        return HttpResponseRedirect('/signup')
+
+    else:
+        print('paso 0')
+        return render(request, 'opcion_tipo_user.html')
+
+
 
 @csrf_exempt
 def login_user(request):
@@ -115,27 +173,34 @@ def login_user(request):
     flag_url=False
     user_projects= []
     if request.method=='POST':
-        username=request.POST['username']
-        password=request.POST['password']
-        user=authenticate(username=username,password=password)
-        if user !=None:
-            login(request,user)
-            return HttpResponseRedirect('/login')
-        else:
-            #pensar algo
-            return HttpResponse('contraseña incorrecta')
+        try:
+            username=request.POST['username']
+            password=request.POST['password']
+            user=authenticate(username=username,password=password)
+            if user !=None:
+                login(request,user)
+                return HttpResponseRedirect('/login')
+            else:
+                return HttpResponse('contraseña incorrecta')
+        except:
+            #poner AY ERROR 404
+            return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
+
     else:
         if request.user.is_authenticated:
-            user_projects =  proyectos.objects.filter(usuario=request.user.username)
-            if not user_projects:
-                mensaje='You havent analyzed any project yet!'
-                flag_url= True
+                user_projects =  proyectos.objects.filter(usuario=request.user.username)
+                if not user_projects:
+                    mensaje='You havent analyzed any project yet!'
+                    flag_url= True
 
-        return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
+    return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
+
 
 @csrf_exempt
 def logout_user(request):
     logout(request)
+    flag_estudiante=False
+    flag_profesor = False
     return HttpResponseRedirect('/')
 
 #funciones auxiliares

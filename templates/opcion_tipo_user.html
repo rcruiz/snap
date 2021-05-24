@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+  {% csrf_token %}
+  <div class="wrapper">
+  <div class="wrapper">
+    <div class="box2">
+      <div id="usuarios">
+         <form class="login" method="post" action="/type-signup">
+           <input id="tipo" type="text" name="tipo" value="Estudiante">
+            <input class="boton" type="submit" value="Ok">
+         </form>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="box3">
+      <div id="usuarios">
+         <form class="login" method="post" action="/type-signup">
+           <input id="tipo" type="text" name="tipo" value="Profesor">
+            <input class="boton" type="submit" value="Ok">
+         </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock cuerpo %}
