@@ -15,6 +15,11 @@ from statistics import mean
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+import zipfile
+from io import BytesIO
+import csv
+import io
+
 
 
 switch_nivel= {
@@ -61,6 +66,22 @@ def principal(request):
 def info(request):
 
     return (render(request, 'info.html'))
+
+def fileiterator(zipf):
+	with zipfile.ZipFile(zipf, "r", zipfile.ZIP_STORED) as openzip:
+		filelist = openzip.infolist()
+		for f in filelist:
+			yield(f.filename, openzip.read(f))
+
+def process(zipf, callback):
+	with zipfile.ZipFile(zipf, "r", zipfile.ZIP_STORED) as openzip:
+		filelist = openZip.infolist()
+		for f in filelist:
+			callback(f.filename, openzip.read(f))
+
+def handlezipfile(zipfile):
+  for filename,content in fileiterator(zipfile):
+    calcular_puntuacion(filename)
 @csrf_exempt
 def analyze(request):
     if request.user.is_authenticated:
@@ -79,10 +100,15 @@ def analyze(request):
                 #si es PROFESOR ZIPPPP
                 if request.method == 'POST' and request.FILES['myfile']:
                     myfile = request.FILES['myfile']
-                    fs = FileSystemStorage()
-                    filename = fs.save(myfile.name, myfile)
-                    uploaded_file_url = fs.url(filename)
-                    return render(request, 'simple_upload.html', {'uploaded_file_url': uploaded_file_url})
+                    # fs = FileSystemStorage()
+                    # filename = fs.save(myfile.name, myfile)
+                    # uploaded_file_url = fs.url(filename)
+                    # print(uploaded_file_url)
+                    # {'uploaded_file_url': uploaded_file_url}
+                    #filename = BytesIO(myfile.read())
+                    handlezipfile(myfile)
+
+                    return HttpResponseRedirect('/')
 
                 return(render(request, 'simple_upload.html'))
 
@@ -199,8 +225,6 @@ def login_user(request):
 @csrf_exempt
 def logout_user(request):
     logout(request)
-    flag_estudiante=False
-    flag_profesor = False
     return HttpResponseRedirect('/')
 
 #funciones auxiliares
