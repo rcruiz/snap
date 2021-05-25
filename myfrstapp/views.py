@@ -16,9 +16,6 @@ from statistics import mean
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import zipfile
-from io import BytesIO
-import csv
-import io
 
 
 
@@ -67,25 +64,10 @@ def info(request):
 
     return (render(request, 'info.html'))
 
-def fileiterator(zipf):
-	with zipfile.ZipFile(zipf, "r", zipfile.ZIP_STORED) as openzip:
-		filelist = openzip.infolist()
-		for f in filelist:
-			yield(f.filename, openzip.read(f))
 
-def process(zipf, callback):
-	with zipfile.ZipFile(zipf, "r", zipfile.ZIP_STORED) as openzip:
-		filelist = openZip.infolist()
-		for f in filelist:
-			callback(f.filename, openzip.read(f))
-
-def handlezipfile(zipfile):
-  for filename,content in fileiterator(zipfile):
-    calcular_puntuacion(filename)
 @csrf_exempt
 def analyze(request):
     if request.user.is_authenticated:
-        #ver si eres profesor o NOOO
         if request.method=='POST':
             #si es alumno
             if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
@@ -98,29 +80,51 @@ def analyze(request):
                 return(render(request, 'result.html',{'nivel':level}))
             else:
                 #si es PROFESOR ZIPPPP
-                if request.method == 'POST' and request.FILES['myfile']:
-                    myfile = request.FILES['myfile']
-                    # fs = FileSystemStorage()
-                    # filename = fs.save(myfile.name, myfile)
-                    # uploaded_file_url = fs.url(filename)
-                    # print(uploaded_file_url)
-                    # {'uploaded_file_url': uploaded_file_url}
-                    #filename = BytesIO(myfile.read())
-                    handlezipfile(myfile)
+                try:
+                    url1=request.POST['url']
+                    url=parse_url(url1)
+                    puntuacion = calcular_puntuacion(url)
+                    level=switch_nivel.get(puntuacion)
+                    new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= level)
+                    new_proyect.save()
+                    return(render(request, 'result.html',{'nivel':level}))
+                except:
+                    # try:
+                        myfile = request.FILES['myfile']
+                        fs = FileSystemStorage()
+                        filezip = fs.save(myfile.name, myfile)
+                        uploaded_file_url = fs.url(filezip)
+                        print(uploaded_file_url)
+                        filename=filezip.split('.')[0]
+                        print(filename)
+                        # open and extract all files in the zip
+                        ruta_zip="/home/paula/dir-practica/myproject"+uploaded_file_url
+                        ruta_extraccion = "/home/paula/dir-practica/myproject/media/"+request.user.username + '&' + filename
+                        password = None
+                        print('1')
+                        z = zipfile.ZipFile(ruta_zip, "r")
 
-                    return HttpResponseRedirect('/')
-
-                return(render(request, 'simple_upload.html'))
-
+                        print('2')
+                        try:
+                            print('3')
+                            print(z.namelist())
+                            print('4')
+                            z.extractall(pwd=password, path=ruta_extraccion)
+                        except:
+                            print('Error')
+                            pass
+                        z.close()
+                        print('5')
+                        return(render(request, 'simple_upload.html',{'uploaded_file_url': uploaded_file_url}))
+                    # except:
+                    #     print('6')
+                    #     return(render(request, 'simple_upload.html'))
         else:
 
             if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
                 return (render(request, 'analyze-estudiantes.html'))
             else:
-
-                    #return (render(request, 'analyze-profesores.html'))
-
-                    return(render(request, 'simple_upload.html'))
+                return(render(request, 'simple_upload.html'))
 
     else:
         #no estas logeado
