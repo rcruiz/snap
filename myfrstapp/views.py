@@ -71,26 +71,38 @@ def analyze(request):
         if request.method=='POST':
             #si es alumno
             if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
-                level=calcular_nivel(request.POST['url'])
-                new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level)
+                level,data,name_proyect=calcular_nivel(request.POST['url'])
+                print('condicionales ' + str(data[0]))
+                print('sincronizacion ' + str(data[1]))
+                print('control de flujo ' + str(data[2]))
+                print('abstraccion ' + str(data[3]))
+                print('paralelismo ' + str(data[4]))
+                print('categorias ' + str(data[5]))
+                print('interactividad ' + str(data[6]))
+
+                new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
+                condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
+                categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
                 new_proyect.save()
-                return(render(request, 'result.html',{'nivel':level}))
+                return(render(request, 'result.html',{'proyecto':new_proyect}))
             else:
-                #si es PROFESOR ZIPPPP
+                #si es PROFESOR ZIPPPP o url
                 try:
-                    level=calcular_nivel(request.POST['url'])
-                    new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level)
+                    level,data,name_proyect=calcular_nivel(request.POST['url'])
+                    new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
+                    condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
+                    categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
                     new_proyect.save()
-                    return(render(request, 'result.html',{'nivel':level}))
+                    return(render(request, 'result.html',{'proyecto':new_proyect}))
                 except:
-                    # try:
-                        uploaded_file_url, archivos_xml, ruta= save_extract_zip(request.FILES['myfile'],request)
-                        print('hola')
-                        save_puntuacion_xml(archivos_xml, ruta)
+                    try:
+                        uploaded_file_url, archivos_xml, ruta, filename= save_extract_zip(request.FILES['myfile'],request)
+                        print(filename)
+                        save_puntuacion_xml(archivos_xml, ruta, request,filename)
                         return(render(request, 'simple_upload.html',{'uploaded_file_url': uploaded_file_url}))
-                    # except:
-                    #     "no se ha echo bien la subida :("
-                    #     return(render(request, 'simple_upload.html'))
+                    except:
+                        "no se ha echo bien la subida :("
+                        return(render(request, 'simple_upload.html'))
 
         else:
 
@@ -102,8 +114,11 @@ def analyze(request):
     else:
         #no estas logeado
         if request.method=='POST':
-            level = calcular_nivel(request.POST['url'])
-            return(render(request, 'result.html',{'nivel':level}))
+            level,data,name_proyect = calcular_nivel(request.POST['url'])
+            new_proyect={'url_proyecto':request.POST['url'], 'nivel': level,
+            'condicionales':data[0], 'sincronizacion':data[1], 'control_flujo':data[2], 'abstraccion':data[3],'paralelismo':data[4],
+            'categorias':data[5],'interactividad':data[6],'name_proyecto':name_proyect}
+            return(render(request, 'result.html',{'proyecto':new_proyect}))
         else:
             return (render(request, 'analyze-estudiantes.html'))
 
@@ -194,10 +209,16 @@ def logout_user(request):
     return HttpResponseRedirect('/')
 
 #funciones auxiliares
-def save_puntuacion_xml(archivos_xml, ruta):
+def save_puntuacion_xml(archivos_xml, ruta, request, filename):
     for xml in archivos_xml:
-        puntuacion = calcular_puntuacion(ruta+'/'+xml)
+        proyecto=xml.split('.')[0]
+        ruta_xml=ruta+'/'+xml
+        puntuacion,data = calcular_puntuacion(ruta_xml)
         level=switch_nivel.get(puntuacion)
+        new_proyect=proyectos(usuario=request.user.username,name_proyecto=proyecto,url_proyecto=ruta_xml, nivel= level,
+        condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
+        categorias=data[5],interactividad=data[6],nombre_zip=filename)
+        new_proyect.save()
         print(level)
 
 
@@ -226,13 +247,13 @@ def save_extract_zip(myfile,request):
         pass
     z.close()
     print('5')
-    return uploaded_file_url, archivos, ruta_extraccion
+    return uploaded_file_url, archivos, ruta_extraccion, filename
 
 def calcular_nivel(url):
-    url1=parse_url(url)
-    puntuacion = calcular_puntuacion(url1)
+    url1,name_proyect=parse_url(url)
+    puntuacion, puntuaciones = calcular_puntuacion(url1)
     level=switch_nivel.get(puntuacion)
-    return level
+    return level, puntuaciones,name_proyect
 
 def switch_puntuacion(media):
     if media <0.5:
@@ -251,7 +272,7 @@ def parse_url(url):
     s3=s[2]
     url=s1+s2+'/'+s3
     print(url)
-    return url
+    return url,s3
 
 def calcular_puntuacion(url):
     parse_xml(url)
@@ -262,19 +283,12 @@ def calcular_puntuacion(url):
     para=paralelismo()
     categ=categorias()
     interactividad=puntuacion_interactividad()
-    print('condicionales ' + str(condicionales))
-    print('sincronizacion ' + str(sincronizacion))
-    print('control de flujo ' + str(flujo))
-    print('abstraccion ' + str(abst))
-    print('paralelismo ' + str(para))
-    print('categorias ' + str(categ))
-    print('interactividad ' + str(interactividad))
     data=(condicionales,sincronizacion,flujo,abst,para,categ,interactividad)
     media=mean(data)
     print("La media es: " + str(media))
     print("El nivel es " + str(switch_puntuacion(media)))
     puntuacion = switch_puntuacion(media)
-    return puntuacion
+    return puntuacion, data
 
 #mira si hay más de dos bloques en 1 script para control de flujo
 def blocks_script(data):

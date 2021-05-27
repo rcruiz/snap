@@ -205,7 +205,8 @@
 		display: flex;
 		flex-direction: row;
 		overflow: hidden;
-		padding: 5em 0em 5em 0em;
+		padding-bottom: 20px;
+		padding-top: 20px;
 		background: #FFF;
 	}
 

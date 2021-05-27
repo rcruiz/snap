@@ -10,9 +10,45 @@
         <h2>YOUR LEVEL IS:</h2>
       </div>
       <br></br>
-      <h1>{{nivel}}</h1>
+      <h1>{{proyecto.nivel}}</h1>
       <br></br>
       <a href="http://127.0.0.1:8000/analyze"> Analyze another project </a>
+      </div>
+    </div>
+
+
+    <div class="wrapper">
+      <div class="divTable cinereousTable">
+      <div class="divTableHeading">
+      <div class="divTableRow">
+        <div class="divTableHead">Secciones</div>
+        <div class="divTableHead">Puntuacion</div>
+      </div>
+      </div>
+      <div class="divTableBody">
+          <div class="divTableRow">
+            <div class="divTableCell">Condicionales</div><div class="divTableCell">{{proyecto.condicionales}}</div>
+          </div>
+          <div class="divTableRow">
+            <div class="divTableCell">Sincronizacion</div><div class="divTableCell">{{proyecto.sincronizacion}}</div>
+          </div>
+          <div class="divTableRow">
+            <div class="divTableCell">Control de flujo</div><div class="divTableCell">{{proyecto.control_flujo}}</div>
+          </div>
+          <div class="divTableRow">
+            <div class="divTableCell">Abstraccion</div><div class="divTableCell">{{proyecto.abstraccion}}</div>
+          </div>
+          <div class="divTableRow">
+            <div class="divTableCell">Paralelismo</div><div class="divTableCell">{{proyecto.paralelismo}}</div>
+          </div>
+          <div class="divTableRow">
+            <div class="divTableCell">Categorias</div><div class="divTableCell">{{proyecto.categorias}}</div>
+          </div>
+          <div class="divTableRow">
+            <div class="divTableCell">Interactividad</div><div class="divTableCell">{{proyecto.interactividad}}</div>
+          </div>
+      </div>
+      </div>
 
   </div>
 </div>
