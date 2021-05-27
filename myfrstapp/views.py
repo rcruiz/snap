@@ -71,54 +71,27 @@ def analyze(request):
         if request.method=='POST':
             #si es alumno
             if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
-                url1=request.POST['url']
-                url=parse_url(url1)
-                puntuacion = calcular_puntuacion(url)
-                level=switch_nivel.get(puntuacion)
-                new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= level)
+                level=calcular_nivel(request.POST['url'])
+                new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level)
                 new_proyect.save()
                 return(render(request, 'result.html',{'nivel':level}))
             else:
                 #si es PROFESOR ZIPPPP
                 try:
-                    url1=request.POST['url']
-                    url=parse_url(url1)
-                    puntuacion = calcular_puntuacion(url)
-                    level=switch_nivel.get(puntuacion)
-                    new_proyect=proyectos(usuario=request.user.username, url_proyecto=url1, nivel= level)
+                    level=calcular_nivel(request.POST['url'])
+                    new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level)
                     new_proyect.save()
                     return(render(request, 'result.html',{'nivel':level}))
                 except:
                     # try:
-                        myfile = request.FILES['myfile']
-                        fs = FileSystemStorage()
-                        filezip = fs.save(myfile.name, myfile)
-                        uploaded_file_url = fs.url(filezip)
-                        print(uploaded_file_url)
-                        filename=filezip.split('.')[0]
-                        print(filename)
-                        # open and extract all files in the zip
-                        ruta_zip="/home/paula/dir-practica/myproject"+uploaded_file_url
-                        ruta_extraccion = "/home/paula/dir-practica/myproject/media/"+request.user.username + '&' + filename
-                        password = None
-                        print('1')
-                        z = zipfile.ZipFile(ruta_zip, "r")
-
-                        print('2')
-                        try:
-                            print('3')
-                            print(z.namelist())
-                            print('4')
-                            z.extractall(pwd=password, path=ruta_extraccion)
-                        except:
-                            print('Error')
-                            pass
-                        z.close()
-                        print('5')
+                        uploaded_file_url, archivos_xml, ruta= save_extract_zip(request.FILES['myfile'],request)
+                        print('hola')
+                        save_puntuacion_xml(archivos_xml, ruta)
                         return(render(request, 'simple_upload.html',{'uploaded_file_url': uploaded_file_url}))
                     # except:
-                    #     print('6')
+                    #     "no se ha echo bien la subida :("
                     #     return(render(request, 'simple_upload.html'))
+
         else:
 
             if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
@@ -129,10 +102,7 @@ def analyze(request):
     else:
         #no estas logeado
         if request.method=='POST':
-            url1=request.POST['url']
-            url=parse_url(url1)
-            puntuacion = calcular_puntuacion(url)
-            level=switch_nivel.get(puntuacion)
+            level = calcular_nivel(request.POST['url'])
             return(render(request, 'result.html',{'nivel':level}))
         else:
             return (render(request, 'analyze-estudiantes.html'))
@@ -157,7 +127,6 @@ def signup(request):
     global user_tipo
     mensaje=''
     if request.method == 'POST':
-
         form = UserCreationForm(request.POST)
         if form.is_valid():
             print('paso 3')
@@ -173,18 +142,14 @@ def signup(request):
             return HttpResponseRedirect('/login')
         else:
             return render(request, 'signup.html', {'form': form,'mensaje': mensaje})
-
-
     else:
 
         form = UserCreationForm()
         print('paso 2')
         return render(request, 'signup.html', {'form': form,'mensaje': mensaje})
 
-
 @csrf_exempt
 def choose(request):
-
     global user_tipo
     if request.POST:
         user_tipo= request.POST['tipo']
@@ -194,8 +159,6 @@ def choose(request):
     else:
         print('paso 0')
         return render(request, 'opcion_tipo_user.html')
-
-
 
 @csrf_exempt
 def login_user(request):
@@ -225,13 +188,51 @@ def login_user(request):
 
     return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
 
-
 @csrf_exempt
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/')
 
 #funciones auxiliares
+def save_puntuacion_xml(archivos_xml, ruta):
+    for xml in archivos_xml:
+        puntuacion = calcular_puntuacion(ruta+'/'+xml)
+        level=switch_nivel.get(puntuacion)
+        print(level)
+
+
+def save_extract_zip(myfile,request):
+
+    fs = FileSystemStorage()
+    filezip = fs.save(myfile.name, myfile)
+    uploaded_file_url = fs.url(filezip)
+    print(uploaded_file_url)
+    filename=filezip.split('.')[0]
+    print(filename)
+    # open and extract all files in the zip
+    ruta_zip="/home/paula/dir-practica/myproject"+uploaded_file_url
+    ruta_extraccion = "/home/paula/dir-practica/myproject/media/"+request.user.username + '&' + filename
+    password = None
+    print('1')
+    z = zipfile.ZipFile(ruta_zip, "r")
+    print('2')
+    try:
+        print('3')
+        archivos = z.namelist()
+        z.extractall(pwd=password, path=ruta_extraccion)
+        print('4')
+    except:
+        print('Error')
+        pass
+    z.close()
+    print('5')
+    return uploaded_file_url, archivos, ruta_extraccion
+
+def calcular_nivel(url):
+    url1=parse_url(url)
+    puntuacion = calcular_puntuacion(url1)
+    level=switch_nivel.get(puntuacion)
+    return level
 
 def switch_puntuacion(media):
     if media <0.5:
