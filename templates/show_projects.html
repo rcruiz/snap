@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+  {% csrf_token %}
+
+
+      {% if flag_url%}
+
+        <div class="wrapper">
+        <div class="box2">
+          <div class="title">
+            <h2>You dont have any project.</h2>
+          </div>
+          <br><br>
+          <a href="http://127.0.0.1:8000/analyze"> Analyze your first project! </a>
+        </div>
+      {% else %}
+        {% if user.is_authenticated %}
+          <div class="wrapper">
+          <div class="divTable cinereousTable">
+          <div class="divTableHeading">
+          <div class="divTableRow">
+          <div class="divTableHead">Proyecto</div>
+          <div class="divTableHead">Url </div>
+          <div class="divTableHead">Nivel</div>
+          </div>
+          </div>
+          <div class="divTableBody">
+            {% for project in user_projects %}
+                <div class="divTableRow">
+                  <div class="divTableCell">{{project.name_proyecto}}</div><div class="divTableCell"><a href={{project.url_proyecto}}>{{project.url_proyecto}}</a></div><div class="divTableCell">{{project.nivel}}</div></div>
+
+            {% endfor %}
+          </div>
+          </div>
+          </div>
+
+        {% endif %}
+
+      {% endif %}
+
+      {% if user.is_authenticated %}
+          {%if not flag_zip and not flag_estudiante%}
+
+            <div class="wrapper">
+              <div class="box2">
+                   <form method="post" action="/projects">
+                      <label for="zip">Enter your zip name to dowload the csv file: </label>
+                      <br></br>
+                      <input id="zip" type="text" name="name_zip" value="">
+                      <input class="button" type="submit" value="DOWNLOAD">
+                   </form>
+                   {{  mensaje }}
+              </div>
+            </div>
+          {% endif %}
+
+        {% endif %}
+      </div>
+
+
+{% endblock cuerpo %}

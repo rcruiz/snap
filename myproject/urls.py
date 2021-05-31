@@ -31,6 +31,7 @@ urlpatterns = [
     path('type-signup', views.choose),
     path('signup', views.signup),
     path('logout', views.logout_user),
+    path('projects', views.show_projects),
     path('admin/', admin.site.urls),
 
 

@@ -4,53 +4,101 @@
 {% block cuerpo %}
 
 {% csrf_token %}
-<div class="wrapper">
-  <div class="box2">
-      <div class="title">
-        <h2>YOUR LEVEL IS:</h2>
+{%if flag_url%}
+  <div class="wrapper">
+    <div class="box2">
+        <div class="title">
+          <h2>YOUR LEVEL IS:</h2>
+        </div>
+        <br></br>
+        <h1>{{proyecto.nivel}}</h1>
+        <br></br>
+        <a href="http://127.0.0.1:8000/analyze"> Analyze another project </a>
+        </div>
       </div>
-      <br></br>
-      <h1>{{proyecto.nivel}}</h1>
-      <br></br>
-      <a href="http://127.0.0.1:8000/analyze"> Analyze another project </a>
-      </div>
+      <div class="wrapper">
+        <div class="divTable cinereousTable">
+        <div class="divTableHeading">
+        <div class="divTableRow">
+          <div class="divTableHead">Secciones</div>
+          <div class="divTableHead">Puntuacion</div>
+        </div>
+        </div>
+        <div class="divTableBody">
+            <div class="divTableRow">
+              <div class="divTableCell">Condicionales</div><div class="divTableCell">{{proyecto.condicionales}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Sincronizacion</div><div class="divTableCell">{{proyecto.sincronizacion}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Control de flujo</div><div class="divTableCell">{{proyecto.control_flujo}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Abstraccion</div><div class="divTableCell">{{proyecto.abstraccion}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Paralelismo</div><div class="divTableCell">{{proyecto.paralelismo}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Categorias</div><div class="divTableCell">{{proyecto.categorias}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Interactividad</div><div class="divTableCell">{{proyecto.interactividad}}</div>
+            </div>
+        </div>
+        </div>
+
     </div>
-
-
+  {%else %}
+  <div class="wrapper">
     <div class="wrapper">
       <div class="divTable cinereousTable">
       <div class="divTableHeading">
       <div class="divTableRow">
-        <div class="divTableHead">Secciones</div>
-        <div class="divTableHead">Puntuacion</div>
+        <div class="divTableHead">Nombre</div>
+        <div class="divTableHead">Nivel</div>
+        <div class="divTableHead">Abstraccion</div>
+        <div class="divTableHead">Condicionales</div>
+        <div class="divTableHead">Categorias</div>
+        <div class="divTableHead">Control flujo</div>
+        <div class="divTableHead">Interactividad</div>
+        <div class="divTableHead">Paralelismo</div>
+        <div class="divTableHead">Sincronizacion</div>
       </div>
       </div>
       <div class="divTableBody">
+        {%for proyect in proyecto%}
           <div class="divTableRow">
-            <div class="divTableCell">Condicionales</div><div class="divTableCell">{{proyecto.condicionales}}</div>
+            <div class="divTableCell">{{proyect.name_proyecto}}</div>
+            <div class="divTableCell">{{proyect.nivel}}</div>
+            <div class="divTableCell">{{proyect.abstraccion}}</div>
+            <div class="divTableCell">{{proyect.condicionales}}</div>
+            <div class="divTableCell">{{proyect.categorias}}</div>
+            <div class="divTableCell">{{proyect.control_flujo}}</div>
+            <div class="divTableCell">{{proyect.interactividad}}</div>
+            <div class="divTableCell">{{proyect.paralelismo}}</div>
+            <div class="divTableCell">{{proyect.sincronizacion}}</div>
           </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Sincronizacion</div><div class="divTableCell">{{proyecto.sincronizacion}}</div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Control de flujo</div><div class="divTableCell">{{proyecto.control_flujo}}</div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Abstraccion</div><div class="divTableCell">{{proyecto.abstraccion}}</div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Paralelismo</div><div class="divTableCell">{{proyecto.paralelismo}}</div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Categorias</div><div class="divTableCell">{{proyecto.categorias}}</div>
-          </div>
-          <div class="divTableRow">
-            <div class="divTableCell">Interactividad</div><div class="divTableCell">{{proyecto.interactividad}}</div>
-          </div>
-      </div>
-      </div>
+          {%endfor%}
+        </div>
+        </div>
 
-  </div>
-</div>
+    </div>
+    </div>
+    <div class="wrapper">
+      <div class="box2">
+           <form method="post" action="/projects">
+              <label for="zip">Get your csv file! </label>
+              <br></br>
+              <input id="zip" type="text" name="name_zip" value="{{filename}}">
+              <input class="button" type="submit" value="DOWNLOAD">
+           </form>
+           {{  mensaje }}
+      </div>
+    </div>
+    {%endif %}
+
+
 
 {% endblock cuerpo %}

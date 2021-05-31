@@ -16,14 +16,15 @@ from statistics import mean
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import zipfile
+import csv
 
 
 
 switch_nivel= {
-    0:'No tienes nivel',
-    1:'Nivel básico',
-    2:'Nivel intermedio',
-    3:'Nivel avanzado'
+    0:'Nulo',
+    1:'Básico',
+    2:'Intermedio',
+    3:'Avanzado'
 }
 
 switch_interactividad= {
@@ -67,10 +68,12 @@ def info(request):
 
 @csrf_exempt
 def analyze(request):
+    flag_url=False
     if request.user.is_authenticated:
         if request.method=='POST':
             #si es alumno
             if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
+                flag_url=True
                 level,data,name_proyect=calcular_nivel(request.POST['url'])
                 print('condicionales ' + str(data[0]))
                 print('sincronizacion ' + str(data[1]))
@@ -84,22 +87,27 @@ def analyze(request):
                 condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
                 categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
                 new_proyect.save()
-                return(render(request, 'result.html',{'proyecto':new_proyect}))
+                return(render(request, 'result.html',{'proyecto':new_proyect, 'flag_url':flag_url}))
             else:
                 #si es PROFESOR ZIPPPP o url
                 try:
+
                     level,data,name_proyect=calcular_nivel(request.POST['url'])
+                    print('olaaa')
                     new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
                     condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
                     categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
                     new_proyect.save()
-                    return(render(request, 'result.html',{'proyecto':new_proyect}))
+                    flag_url=True
+                    print('olaaa2')
+                    return(render(request, 'result.html',{'proyecto':new_proyect,'flag_url':flag_url}))
                 except:
                     try:
                         uploaded_file_url, archivos_xml, ruta, filename= save_extract_zip(request.FILES['myfile'],request)
                         print(filename)
                         save_puntuacion_xml(archivos_xml, ruta, request,filename)
-                        return(render(request, 'simple_upload.html',{'uploaded_file_url': uploaded_file_url}))
+                        user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=filename)
+                        return(render(request, 'result.html',{'filename':filename,'proyecto':user_projects,'flag_url':flag_url}))
                     except:
                         "no se ha echo bien la subida :("
                         return(render(request, 'simple_upload.html'))
@@ -177,9 +185,6 @@ def choose(request):
 
 @csrf_exempt
 def login_user(request):
-    mensaje=''
-    flag_url=False
-    user_projects= []
     if request.method=='POST':
         try:
             username=request.POST['username']
@@ -192,16 +197,49 @@ def login_user(request):
                 return HttpResponse('contraseña incorrecta')
         except:
             #poner AY ERROR 404
-            return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
+            return render(request,'login.html')
 
     else:
-        if request.user.is_authenticated:
-                user_projects =  proyectos.objects.filter(usuario=request.user.username)
-                if not user_projects:
-                    mensaje='You havent analyzed any project yet!'
-                    flag_url= True
+        return render(request,'login.html')
 
-    return render(request,'login.html',{'user_projects':user_projects,'mensaje':mensaje, 'flag_url': flag_url})
+@csrf_exempt
+def show_projects(request):
+    flag_url=False
+    flag_zip=False
+    flag_estudiante=False
+    msj=''
+    user_projects= []
+    if request.method=='GET':
+        if request.user.is_authenticated:
+                user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=None)
+                if tipo.objects.get(usuario=request.user.username).tipo_usuario=='Estudiante':
+                    flag_estudiante=True
+                if not user_projects:
+                    flag_url= True
+        else:
+            flag_url= True
+    else:
+        if request.method=='POST':
+            user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=request.POST['name_zip'])
+            if user_projects:
+                flag_zip=True
+                response = HttpResponse(content_type='text/csv')
+                response['Content-Disposition'] = 'attachment; filename="file.csv"'
+                writer = csv.writer(response)
+                header = ['Name zip', 'Name project', 'Nivel', 'Abstraccion', 'Condicionales', 'Categorias', 'Control flujo',
+                'Interactividad', 'Paralelismo', 'Sincronizacion']
+                writer.writerow(header)
+                for project in user_projects:
+                    writer.writerow([project.nombre_zip, project.name_proyecto, project.nivel, project.abstraccion,
+                    project.condicionales, project.categorias, project.control_flujo, project.interactividad,
+                    project.paralelismo, project.sincronizacion])
+                return response
+            else:
+                msj='That file zip doesnt exit. Try again.'
+    return render(request,'show_projects.html',{'user_projects':user_projects, 'flag_url': flag_url,
+                    'flag_zip': flag_zip,'mensaje':msj, 'flag_estudiante': flag_estudiante})
+
+
 
 @csrf_exempt
 def logout_user(request):

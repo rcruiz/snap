@@ -8,31 +8,14 @@
   {% if user.is_authenticated %}
 
       <div class="wrapper">
-
-      {% if flag_url%}
-        <clear>
-        <a href="http://127.0.0.1:8000/analyze"> Analyze your first project! </a>
-      {% else %}
-
-        <div class="divTable cinereousTable">
-        <div class="divTableHeading">
-        <div class="divTableRow">
-        <div class="divTableHead">Proyecto</div>
-        <div class="divTableHead">Url </div>
-        <div class="divTableHead">Nivel</div>
+        <div class="box2">
+          <div class="title">
+            <h2>Welcome!</h2>
+          </div>
+          <br><br>
+          <a href="http://127.0.0.1:8000/analyze"> Analyze your  project! </a>
         </div>
-        </div>
-        <div class="divTableBody">
-          {% for project in user_projects %}
-            {% if not project.nombre_zip%}
-              <div class="divTableRow">
-                <div class="divTableCell">{{project.name_proyecto}}</div><div class="divTableCell"><a href={{project.url_proyecto}}>{{project.url_proyecto}}</a></div><div class="divTableCell">{{project.nivel}}</div></div>
-            {%endif%}
-          {% endfor %}
-        </div>
-        </div>
-      {% endif %}
-    </div>
+      </div>
 
   {% else %}
     <div class="wrapper">
