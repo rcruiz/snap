@@ -125,14 +125,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 #STATIC_ROOT = os.path.join(BASE_DIR, "/snap/templates")
 #STATIC_URL = '/static/'
+
 STATIC_ROOT = "/home/prodriguezmartin/snap/templates"
+
 STATIC_URL = "/home/prodriguezmartin/snap/templates"
+
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "/snap/templates"),
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "/snap/templates"),
+)
