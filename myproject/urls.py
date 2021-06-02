@@ -21,9 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.principal),
-    path('info', views.info),
+    path('contact', views.info),
     path('analyze', views.analyze),
-    path('contact', views.contact),
     path('basic', views.basic),
     path('intermediate', views.intermediate),
     path('advanced', views.advanced),

@@ -69,52 +69,32 @@ def info(request):
 @csrf_exempt
 def analyze(request):
     flag_url=False
-    if request.user.is_authenticated:
-        if request.method=='POST':
-            #si es alumno
-            if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
-                flag_url=True
-                level,data,name_proyect=calcular_nivel(request.POST['url'])
-                print('condicionales ' + str(data[0]))
-                print('sincronizacion ' + str(data[1]))
-                print('control de flujo ' + str(data[2]))
-                print('abstraccion ' + str(data[3]))
-                print('paralelismo ' + str(data[4]))
-                print('categorias ' + str(data[5]))
-                print('interactividad ' + str(data[6]))
 
-                new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
-                condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-                categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
-                new_proyect.save()
+    if request.user.is_authenticated:
+        estudiante=tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante'
+        if request.method=='POST':
+            if estudiante:
+                flag_url=True
+                new_proyect=analyze_save_project(request)
                 return(render(request, 'result.html',{'proyecto':new_proyect, 'flag_url':flag_url}))
             else:
-                #si es PROFESOR ZIPPPP o url
                 try:
-
-                    level,data,name_proyect=calcular_nivel(request.POST['url'])
-                    print('olaaa')
-                    new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
-                    condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-                    categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
-                    new_proyect.save()
+                    new_proyect=analyze_save_project(request)
                     flag_url=True
-                    print('olaaa2')
                     return(render(request, 'result.html',{'proyecto':new_proyect,'flag_url':flag_url}))
                 except:
-                    try:
-                        uploaded_file_url, archivos_xml, ruta, filename= save_extract_zip(request.FILES['myfile'],request)
-                        print(filename)
-                        save_puntuacion_xml(archivos_xml, ruta, request,filename)
-                        user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=filename)
+
+                        print('hola')
+
+                        flag_url=False
+                        user_projects,filename=analyze_save_zip(request)
+                        print('adios')
                         return(render(request, 'result.html',{'filename':filename,'proyecto':user_projects,'flag_url':flag_url}))
-                    except:
-                        "no se ha echo bien la subida :("
-                        return(render(request, 'simple_upload.html'))
+
 
         else:
 
-            if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
+            if estudiante:
                 return (render(request, 'analyze-estudiantes.html'))
             else:
                 return(render(request, 'simple_upload.html'))
@@ -122,11 +102,12 @@ def analyze(request):
     else:
         #no estas logeado
         if request.method=='POST':
+            flag_url=True
             level,data,name_proyect = calcular_nivel(request.POST['url'])
             new_proyect={'url_proyecto':request.POST['url'], 'nivel': level,
             'condicionales':data[0], 'sincronizacion':data[1], 'control_flujo':data[2], 'abstraccion':data[3],'paralelismo':data[4],
             'categorias':data[5],'interactividad':data[6],'name_proyecto':name_proyect}
-            return(render(request, 'result.html',{'proyecto':new_proyect}))
+            return(render(request, 'result.html',{'proyecto':new_proyect, 'flag_url':flag_url}))
         else:
             return (render(request, 'analyze-estudiantes.html'))
 
@@ -247,6 +228,25 @@ def logout_user(request):
     return HttpResponseRedirect('/')
 
 #funciones auxiliares
+def analyze_save_project(request):
+
+    level,data,name_proyect=calcular_nivel(request.POST['url'])
+    new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
+    condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
+    categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
+    new_proyect.save()
+    return new_proyect
+
+def analyze_save_zip(request):
+    print('a')
+    uploaded_file_url, archivos_xml, ruta, filename= save_extract_zip(request.FILES['myfile'],request)
+    print('b')
+    save_puntuacion_xml(archivos_xml, ruta, request,filename)
+    print('c')
+    user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=filename)
+    print('d')
+    return user_projects, filename
+
 def save_puntuacion_xml(archivos_xml, ruta, request, filename):
     for xml in archivos_xml:
         proyecto=xml.split('.')[0]
@@ -268,23 +268,18 @@ def save_extract_zip(myfile,request):
     print(uploaded_file_url)
     filename=filezip.split('.')[0]
     print(filename)
-    # open and extract all files in the zip
+    # open and extract all files in the zip OJOOOOOO PETARA EN pythonanywhere
     ruta_zip="/home/paula/dir-practica/myproject"+uploaded_file_url
     ruta_extraccion = "/home/paula/dir-practica/myproject/media/"+request.user.username + '&' + filename
     password = None
-    print('1')
     z = zipfile.ZipFile(ruta_zip, "r")
-    print('2')
     try:
-        print('3')
         archivos = z.namelist()
         z.extractall(pwd=password, path=ruta_extraccion)
-        print('4')
     except:
         print('Error')
         pass
     z.close()
-    print('5')
     return uploaded_file_url, archivos, ruta_extraccion, filename
 
 def calcular_nivel(url):
@@ -496,6 +491,9 @@ def abstraccion():
         puntuacion_bajo = 1
     elif n_sprite>=2 and n_script >=2:
         puntuacion_medio =2
+    if  data['block-definition']:
+        puntuacion_avanzado = 3
+
 
     #puntuacion ALTA BLOOCKS DEFINITION
     return max(puntuacion_bajo, puntuacion_medio, puntuacion_avanzado)

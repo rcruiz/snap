@@ -27,7 +27,8 @@ DEBUG = True
 
 #pythonanywhere
 ALLOWED_HOSTS = [
-    'prodriguezmartin.pythonanywhere.com'
+    'prodriguezmartin.pythonanywhere.com',
+    '127.0.0.1'
 ]
 
 
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/prodriguezmartin/snap/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,10 +124,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-#STATIC_ROOT = os.path.join(BASE_DIR, "/snap/templates")
+#STATIC_ROOT = os.path.join(BASE_DIR, "templates")
 STATIC_URL = '/static/'
-
-STATIC_ROOT = "/home/prodriguezmartin/snap/templates"
+#
+# STATIC_ROOT = "/home/prodriguezmartin/snap/templates"
 
 #STATIC_URL = "/home/prodriguezmartin/snap/templates"
 
@@ -137,5 +138,5 @@ STATICFILES_FINDERS = (
 
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "/snap/templates"),
+    os.path.join(BASE_DIR, "templates"),
 )
