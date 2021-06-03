@@ -3,16 +3,236 @@
         {
             "sprite": 1,
             "script": 1,
-            "block": "doSetVar",
+            "block": "receiveGo",
             "num_block": 1
         },
         {
             "sprite": 1,
-            "script": 2,
-            "block": "doDeleteFromList",
+            "script": 1,
+            "block": "doSetVar",
             "num_block": 2
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 3
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 4
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doAsk",
+            "num_block": 5
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 6
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
+            "num_block": 7
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doAsk",
+            "num_block": 8
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doIf",
+            "num_block": 9
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportIsA",
+            "num_block": 10
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
+            "num_block": 11
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 12
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
+            "num_block": 13
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doAsk",
+            "num_block": 14
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doIfElse",
+            "num_block": 15
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "reportEquals",
+            "num_block": 16
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "getLastAnswer",
+            "num_block": 17
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 18
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "bubble",
+            "num_block": 21
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "doSetVar",
+            "num_block": 23
+        },
+        {
+            "sprite": 1,
+            "script": 1,
+            "block": "bubble",
+            "num_block": 26
         }
     ],
-    "variables": [],
-    "block-definition": []
+    "variables": [
+        {
+            "variable": "inputText",
+            "number_var": 1
+        },
+        {
+            "variable": "shiftValue",
+            "number_var": 2
+        },
+        {
+            "variable": "outputText",
+            "number_var": 3
+        }
+    ],
+    "block-definition": [
+        {
+            "name": "answer",
+            "number": 1
+        },
+        {
+            "name": "Encode one character",
+            "number": 2
+        },
+        {
+            "name": "Decode one Character %'char' %'shift #'",
+            "number": 3
+        },
+        {
+            "name": "Encode %'text' %'shift #'",
+            "number": 4
+        },
+        {
+            "name": "Decode %'text' %'shift #'",
+            "number": 5
+        }
+    ],
+    "answer": [
+        {
+            "block": "doReport"
+        }
+    ],
+    "Encode one character": [],
+    "Decode one Character %'char' %'shift #'": [
+        {
+            "block": "doReport"
+        },
+        {
+            "block": "reportUnicodeAsLetter"
+        },
+        {
+            "block": "reportSum"
+        },
+        {
+            "block": "reportUnicode"
+        }
+    ],
+    "Encode %'text' %'shift #'": [
+        {
+            "block": "doDeclareVariables"
+        },
+        {
+            "block": "doSetVar"
+        },
+        {
+            "block": "doFor"
+        },
+        {
+            "block": "reportStringSize"
+        },
+        {
+            "block": "doSetVar"
+        },
+        {
+            "block": "reportJoinWords"
+        },
+        {
+            "block": "reportLetter"
+        },
+        {
+            "block": "doReport"
+        }
+    ],
+    "Decode %'text' %'shift #'": [
+        {
+            "block": "doDeclareVariables"
+        },
+        {
+            "block": "doSetVar"
+        },
+        {
+            "block": "doFor"
+        },
+        {
+            "block": "reportStringSize"
+        },
+        {
+            "block": "doSetVar"
+        },
+        {
+            "block": "reportJoinWords"
+        },
+        {
+            "block": "reportLetter"
+        },
+        {
+            "block": "doReport"
+        }
+    ]
 }
