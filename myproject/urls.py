@@ -31,6 +31,7 @@ urlpatterns = [
     path('signup', views.signup),
     path('logout', views.logout_user),
     path('projects', views.show_projects),
+    path('dashboard', views.dashboard),
     path('admin/', admin.site.urls),
 
 

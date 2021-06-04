@@ -3,236 +3,633 @@
         {
             "sprite": 1,
             "script": 1,
-            "block": "receiveGo",
+            "block": "receiveKey",
             "num_block": 1
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doSetVar",
+            "block": "doIfElse",
             "num_block": 2
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doSetVar",
-            "num_block": 3
-        },
-        {
-            "sprite": 1,
-            "script": 1,
-            "block": "doSetVar",
+            "block": "doRepeat",
             "num_block": 4
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doAsk",
+            "block": "turn",
             "num_block": 5
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doSetVar",
+            "block": "doStamp",
             "num_block": 6
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "getLastAnswer",
+            "block": "doSwitchToCostume",
             "num_block": 7
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doAsk",
+            "block": "reportNewCostumeStretched",
             "num_block": 8
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doIf",
+            "block": "setEffect",
             "num_block": 9
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "reportIsA",
+            "block": "doStamp",
             "num_block": 10
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "getLastAnswer",
+            "block": "clearEffects",
             "num_block": 11
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doSetVar",
+            "block": "doSwitchToCostume",
             "num_block": 12
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "getLastAnswer",
+            "block": "reportNewCostumeStretched",
             "num_block": 13
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doAsk",
+            "block": "hide",
             "num_block": 14
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doIfElse",
+            "block": "clear",
             "num_block": 15
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "reportEquals",
+            "block": "show",
             "num_block": 16
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "getLastAnswer",
+            "block": "doSetVar",
             "num_block": 17
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doSetVar",
+            "block": "reportNot",
             "num_block": 18
         },
         {
             "sprite": 1,
-            "script": 1,
-            "block": "bubble",
+            "script": 2,
+            "block": "receiveGo",
+            "num_block": 20
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "doSetVar",
             "num_block": 21
         },
         {
             "sprite": 1,
-            "script": 1,
-            "block": "doSetVar",
+            "script": 2,
+            "block": "reportBoolean",
+            "num_block": 22
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "doDeclareVariables",
             "num_block": 23
         },
         {
             "sprite": 1,
-            "script": 1,
-            "block": "bubble",
+            "script": 2,
+            "block": "doSetVar",
+            "num_block": 24
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "clear",
+            "num_block": 25
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "doGotoObject",
             "num_block": 26
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "setHeading",
+            "num_block": 27
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "setColor",
+            "num_block": 28
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "setSize",
+            "num_block": 29
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "down",
+            "num_block": 30
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "changeYPosition",
+            "num_block": 31
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "changeXPosition",
+            "num_block": 33
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "reportProduct",
+            "num_block": 34
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "reportMonadic",
+            "num_block": 36
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "doGotoObject",
+            "num_block": 37
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "up",
+            "num_block": 38
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "gotoXY",
+            "num_block": 39
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "reportQuotient",
+            "num_block": 40
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "reportQuotient",
+            "num_block": 42
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "floodFill",
+            "num_block": 44
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "doGotoObject",
+            "num_block": 45
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "doSwitchToCostume",
+            "num_block": 46
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "reportPenTrailsAsCostume",
+            "num_block": 47
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "clear",
+            "num_block": 48
+        },
+        {
+            "sprite": 1,
+            "script": 2,
+            "block": "show",
+            "num_block": 49
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "receiveGo",
+            "num_block": 50
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "doForever",
+            "num_block": 51
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "doGotoObject",
+            "num_block": 52
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "doIf",
+            "num_block": 53
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "reportMouseDown",
+            "num_block": 54
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "doCutFrom",
+            "num_block": 55
+        },
+        {
+            "sprite": 3,
+            "script": 4,
+            "block": "receiveGo",
+            "num_block": 56
+        },
+        {
+            "sprite": 3,
+            "script": 4,
+            "block": "hide",
+            "num_block": 57
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "receiveKey",
+            "num_block": 58
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "doTellTo",
+            "num_block": 59
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "reifyScript",
+            "num_block": 60
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "doSwitchToCostume",
+            "num_block": 61
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "reportPenTrailsAsCostume",
+            "num_block": 62
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "show",
+            "num_block": 63
+        },
+        {
+            "sprite": 3,
+            "script": 5,
+            "block": "clear",
+            "num_block": 64
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "receiveKey",
+            "num_block": 65
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doTellTo",
+            "num_block": 66
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reifyScript",
+            "num_block": 67
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doDeclareVariables",
+            "num_block": 68
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "show",
+            "num_block": 69
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 70
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doUntil",
+            "num_block": 71
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportLessThan",
+            "num_block": 72
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "turn",
+            "num_block": 74
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 76
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportProduct",
+            "num_block": 77
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "receiveKey",
+            "num_block": 79
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "clear",
+            "num_block": 80
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doTellTo",
+            "num_block": 81
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reifyScript",
+            "num_block": 82
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "hide",
+            "num_block": 83
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doRepeat",
+            "num_block": 84
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "fork",
+            "num_block": 85
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reifyScript",
+            "num_block": 86
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doTellTo",
+            "num_block": 87
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "newClone",
+            "num_block": 88
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reifyScript",
+            "num_block": 89
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doDeclareVariables",
+            "num_block": 90
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doSetVar",
+            "num_block": 91
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportRandom",
+            "num_block": 92
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "gotoXY",
+            "num_block": 93
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportRandom",
+            "num_block": 94
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportAttributeOf",
+            "num_block": 95
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportAttributeOf",
+            "num_block": 96
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportAttributeOf",
+            "num_block": 97
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "setScale",
+            "num_block": 98
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportRandom",
+            "num_block": 99
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "setEffect",
+            "num_block": 100
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportRandom",
+            "num_block": 101
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "show",
+            "num_block": 102
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doUntil",
+            "num_block": 103
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportOr",
+            "num_block": 104
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportLessThan",
+            "num_block": 105
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "yPosition",
+            "num_block": 106
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportAttributeOf",
+            "num_block": 107
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportTouchingObject",
+            "num_block": 108
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "changeYPosition",
+            "num_block": 109
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "changeXPosition",
+            "num_block": 111
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "reportRandom",
+            "num_block": 112
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "doStamp",
+            "num_block": 113
+        },
+        {
+            "sprite": 3,
+            "script": 7,
+            "block": "removeClone",
+            "num_block": 114
         }
     ],
     "variables": [
         {
-            "variable": "inputText",
+            "variable": "folded",
             "number_var": 1
-        },
-        {
-            "variable": "shiftValue",
-            "number_var": 2
-        },
-        {
-            "variable": "outputText",
-            "number_var": 3
         }
     ],
-    "block-definition": [
-        {
-            "name": "answer",
-            "number": 1
-        },
-        {
-            "name": "Encode one character",
-            "number": 2
-        },
-        {
-            "name": "Decode one Character %'char' %'shift #'",
-            "number": 3
-        },
-        {
-            "name": "Encode %'text' %'shift #'",
-            "number": 4
-        },
-        {
-            "name": "Decode %'text' %'shift #'",
-            "number": 5
-        }
-    ],
-    "answer": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "Encode one character": [],
-    "Decode one Character %'char' %'shift #'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportUnicodeAsLetter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportUnicode"
-        }
-    ],
-    "Encode %'text' %'shift #'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doFor"
-        },
-        {
-            "block": "reportStringSize"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportJoinWords"
-        },
-        {
-            "block": "reportLetter"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "Decode %'text' %'shift #'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doFor"
-        },
-        {
-            "block": "reportStringSize"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportJoinWords"
-        },
-        {
-            "block": "reportLetter"
-        },
-        {
-            "block": "doReport"
-        }
-    ]
+    "block-definition": []
 }

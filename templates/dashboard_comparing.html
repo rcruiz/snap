@@ -1,0 +1,52 @@
+
+
+{% extends "index.html" %}
+
+
+{% load static %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js" integrity="sha512-CAv0l04Voko2LIdaPmkvGjH3jLsH+pmTXKFoyh5TIimAME93KjejeP9j7wSeSRXqXForv73KUZGJMn8/P98Ifg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endblock head%}
+
+{% block cuerpo %}
+
+
+    <div class="dashboard">
+      <canvas id="myChart" width="100" height="100"></canvas>
+      <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['No level', 'Basic', 'Intermediate', 'Advanced'],
+                datasets: [{
+                        label: "{{ zip1 }}",
+                        data: {{data1}}, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+                        borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+                        borderWidth: 1,// Ancho del borde
+                    },{
+                        label:"{{ zip2 }}",
+                        data: {{data2}}, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                        backgroundColor: 'rgba(255, 159, 64, 0.2)',// Color de fondo
+                        borderColor: 'rgba(255, 159, 64, 1)',// Color del borde
+                        borderWidth: 1,// Ancho del borde
+                    }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+      </script>
+
+    </div>
+
+
+
+{% endblock cuerpo %}

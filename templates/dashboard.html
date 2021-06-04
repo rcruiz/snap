@@ -1,0 +1,120 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js" integrity="sha512-CAv0l04Voko2LIdaPmkvGjH3jLsH+pmTXKFoyh5TIimAME93KjejeP9j7wSeSRXqXForv73KUZGJMn8/P98Ifg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endblock head%}
+
+{% block cuerpo %}
+
+{% csrf_token %}
+{% if user.is_authenticated %}
+
+    <div class="dashboard">
+      <canvas id="myChart" width="0.5" height="0.5"></canvas>
+      <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['No level', 'Basic', 'Intermediate', 'Advanced'],
+                datasets: [{
+                    label: '# of Projects',
+                    data: {{data}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+      </script>
+      </div>
+
+          <div class="dashboard">
+      <canvas id="myChart2" width="0.5" height="0.5"></canvas>
+      <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['No level', 'Basic', 'Intermediate', 'Advanced'],
+                datasets: [{
+                    label: '# of Projects',
+                    data: {{data}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+            maintainAspectRatio: false,
+            }
+        });
+      </script>
+
+    </div>
+    {%if not flag_estudiante%}
+      <div class="wrapper">
+        <div class="box1">
+             <form method="post" action="/dashboard">
+                <label for="zip">Enter your zip name to show the dashboard: </label>
+                <br></br>
+                <input id="zip" type="text" name="name_zip" value="">
+                <input class="button" type="submit" value="ok">
+             </form>
+             {{  mensaje }}
+        </div>
+        <div class="box2">
+             <form method="post" action="/dashboard">
+                <label for="zip">Enter two zips to compare </label>
+                <br></br>
+                <input id="zip1" type="text" name="name_zip1" value="">
+                <input id="zip2" type="text" name="name_zip2" value="">
+                <input class="button" type="submit" value="ok">
+             </form>
+             {{  mensaje }}
+        </div>
+      </div>
+        {%endif%}
+
+  {%else%}
+    <p>please sign it</p>
+  {%endif%}
+
+{% endblock cuerpo %}

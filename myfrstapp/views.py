@@ -12,7 +12,6 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from myfrstapp.models import proyectos,tipo
 from statistics import mean
-
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import zipfile
@@ -54,7 +53,9 @@ switch_condicionales = {
 
 
 #variables globales
+
 user_tipo=''
+
 # Create your views here.
 
 def principal(request):
@@ -63,7 +64,32 @@ def principal(request):
 
 def info(request):
 
-    return (render(request, 'info.html'))
+    return (render(request, 'contact.html'))
+
+
+@csrf_exempt
+def dashboard(request):
+
+    if request.user.is_authenticated:
+        flag_estudiante=False
+        if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
+            flag_estudiante=True
+        if request.method=='GET':
+            datos= calcular_datos(request,None)
+        else:
+            try:
+                datos=calcular_datos(request,request.POST['name_zip'])
+            except:
+                data1=calcular_datos(request,request.POST['name_zip1'])
+                data2=calcular_datos(request,request.POST['name_zip2'])
+                print(data1)
+                return (render(request, 'dashboard_comparing.html', {'data1':data1, 'data2':data2, 'zip1':request.POST['name_zip1'],'zip2':request.POST['name_zip2']}))
+
+        return (render(request, 'dashboard.html', {'data':datos, 'flag_estudiante':flag_estudiante}))
+
+    else:
+
+        return (render(request, 'dashboard.html'))
 
 
 @csrf_exempt
@@ -85,7 +111,6 @@ def analyze(request):
                 except:
 
                         print('hola')
-
                         flag_url=False
                         user_projects,filename=analyze_save_zip(request)
                         print('adios')
@@ -227,7 +252,26 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-#funciones auxiliares
+# /**************************************************************************************/
+# funciones auxiliares
+
+def calcular_datos(request,zip):
+    basico=0
+    intermedio=0
+    avanzado=0
+    nulo=0
+    user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=zip)
+    for project in user_projects:
+        if project.nivel=='Básico':
+            basico=basico+1
+        elif project.nivel=='Intermedio':
+            intermedio=intermedio+1
+        elif project.nivel=='Avanzado':
+            avanzado=avanzado+1
+        else:
+            nulo=nulo+1
+    return [nulo, basico, intermedio,avanzado]
+
 def analyze_save_project(request):
 
     level,data,name_proyect=calcular_nivel(request.POST['url'])
@@ -250,14 +294,17 @@ def analyze_save_zip(request):
 def save_puntuacion_xml(archivos_xml, ruta, request, filename):
     for xml in archivos_xml:
         proyecto=xml.split('.')[0]
-        ruta_xml=ruta+'/'+xml
-        puntuacion,data = calcular_puntuacion(ruta_xml)
-        level=switch_nivel.get(puntuacion)
-        new_proyect=proyectos(usuario=request.user.username,name_proyecto=proyecto,url_proyecto=ruta_xml, nivel= level,
-        condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-        categorias=data[5],interactividad=data[6],nombre_zip=filename)
-        new_proyect.save()
-        print(level)
+        if proyecto==xml:
+            pass
+        else:
+            ruta_xml=ruta+'/'+xml
+            puntuacion,data = calcular_puntuacion(ruta_xml)
+            level=switch_nivel.get(puntuacion)
+            new_proyect=proyectos(usuario=request.user.username,name_proyecto=proyecto,url_proyecto=ruta_xml, nivel= level,
+            condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
+            categorias=data[5],interactividad=data[6],nombre_zip=filename)
+            new_proyect.save()
+            print(level)
 
 
 def save_extract_zip(myfile,request):
@@ -271,10 +318,12 @@ def save_extract_zip(myfile,request):
     # open and extract all files in the zip OJOOOOOO PETARA EN pythonanywhere
     ruta_zip="/home/paula/dir-practica/myproject"+uploaded_file_url
     ruta_extraccion = "/home/paula/dir-practica/myproject/media/"+request.user.username + '&' + filename
+    print(ruta_extraccion)
     password = None
     z = zipfile.ZipFile(ruta_zip, "r")
     try:
         archivos = z.namelist()
+        print(archivos)
         z.extractall(pwd=password, path=ruta_extraccion)
     except:
         print('Error')

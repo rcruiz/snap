@@ -9,13 +9,16 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="{% static  'default.css'%} " rel="stylesheet"  media="all" />
-<!-- <link href="{% static 'fonts.css' %} " rel="stylesheet" type="text/css" media="all" /> -->
+
+	{% block head %}
+
+{% endblock %}
 
 </head>
 <body>
 <div id="header-wrapper">
 	<div id="header" class="container">
-		<div id="logo"><img src="{%static 'images/icono-letra.png' %}" width="500" height="150" alt="" />
+		<div id="logo"><img src="{%static 'images/icono-letra.png' %}" width="400" height="130" alt="" />
 		</div>
 		<div id="menu">
 			<ul>
@@ -23,7 +26,8 @@
 				<li><a href="/analyze" accesskey="2" title="">Analyze</a></li>
 				<li><a href="/login" accesskey="3" title="">Sign in</a></li>
 				<li><a href="/projects" accesskey="4" title="">Projects</a></li>
-				<li><a href="/contact" accesskey="5" title="">Contact Us</a></li>
+				<li><a href="/dashboard" accesskey="5" title="">Dashboard</a></li>
+				<li><a href="/contact" accesskey="6" title="">Info</a></li>
 			</ul>
 		</div>
 	</div>

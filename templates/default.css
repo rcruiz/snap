@@ -193,6 +193,27 @@
 		background: #FFF;
 	}
 
+
+	/*********************************************************************************/
+	/* dashboard                                                                       */
+	/*********************************************************************************/
+
+	.dashboard
+	{
+		justify-content: center;
+		align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+
+		width: 700px;
+		display: flex;
+		flex-direction: row;
+		overflow: hidden;
+		padding-bottom: 20px;
+		padding-top: 20px;
+		background: #FFF;
+	}
 /*********************************************************************************/
 /* Wrapper                                                                       */
 /*********************************************************************************/
