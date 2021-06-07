@@ -20,10 +20,10 @@ import csv
 
 
 switch_nivel= {
-    0:'Nulo',
-    1:'Básico',
-    2:'Intermedio',
-    3:'Avanzado'
+    0:'No level',
+    1:'Basic',
+    2:'Intermediate',
+    3:'Advanced'
 }
 
 switch_interactividad= {
@@ -90,6 +90,14 @@ def dashboard(request):
     else:
 
         return (render(request, 'dashboard.html'))
+
+@csrf_exempt
+def dashboard_level(request, level):
+
+    data =  proyectos.objects.filter(usuario=request.user.username,nivel=level)
+    print(data)
+    return (render(request, 'dashboard_level.html',{'user_projects': data}))
+
 
 
 @csrf_exempt
@@ -262,11 +270,11 @@ def calcular_datos(request,zip):
     nulo=0
     user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=zip)
     for project in user_projects:
-        if project.nivel=='Básico':
+        if project.nivel=='Basic':
             basico=basico+1
-        elif project.nivel=='Intermedio':
+        elif project.nivel=='Intermediate':
             intermedio=intermedio+1
-        elif project.nivel=='Avanzado':
+        elif project.nivel=='Advanced':
             avanzado=avanzado+1
         else:
             nulo=nulo+1
@@ -335,6 +343,7 @@ def calcular_nivel(url):
     url1,name_proyect=parse_url(url)
     puntuacion, puntuaciones = calcular_puntuacion(url1)
     level=switch_nivel.get(puntuacion)
+    print(level)
     return level, puntuaciones,name_proyect
 
 def switch_puntuacion(media):
@@ -388,11 +397,21 @@ def blocks_script(data):
     return resultado
 #numero de scripts
 def number_script(data):
-    return data['sprites'][-1]['script']
+
+    try:
+        n=data['sprites'][-1]['script']
+        return n
+    except:
+        return 0
 
 #numero de sprites
 def number_sprite(data):
-    return data['sprites'][-1]['sprite']
+    try:
+        n=data['sprites'][-1]['sprite']
+        return n
+    except:
+        return 1
+
 
 def paralelismo():
 

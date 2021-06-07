@@ -32,6 +32,7 @@ urlpatterns = [
     path('logout', views.logout_user),
     path('projects', views.show_projects),
     path('dashboard', views.dashboard),
+    path('dashboard/<str:level>', views.dashboard_level),
     path('admin/', admin.site.urls),
 
 

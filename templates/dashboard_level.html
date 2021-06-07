@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block cuerpo %}
+
+  {% csrf_token %}
+
+
+{% if user.is_authenticated %}
+  <div class="wrapper">
+  <div class="divTable cinereousTable">
+  <div class="divTableHeading">
+  <div class="divTableRow">
+  <div class="divTableHead">Proyecto</div>
+  <div class="divTableHead">Url </div>
+  <div class="divTableHead">Nivel</div>
+  </div>
+  </div>
+  <div class="divTableBody">
+    {% for project in user_projects %}
+        <div class="divTableRow">
+          <div class="divTableCell">{{project.name_proyecto}}</div><div class="divTableCell"><a href={{project.url_proyecto}}>{{project.url_proyecto}}</a></div><div class="divTableCell">{{project.nivel}}</div></div>
+
+    {% endfor %}
+  </div>
+  </div>
+  </div>
+
+{% endif %}
+
+{% endblock cuerpo %}

@@ -24,7 +24,7 @@
                   labels: ['No level', 'Basic', 'Intermediate', 'Advanced'],
                   datasets: [{
                       label: '# of Projects',
-                      data: [1,2,3,4],
+                      data: {{data}},
                       backgroundColor: [
                           'rgba(255, 99, 132, 0.2)',
                           'rgba(54, 162, 235, 0.2)',
@@ -43,7 +43,12 @@
               options: {
                   scales: {
                       y: {
-                          beginAtZero: true
+                          beginAtZero: true,
+                          ticks: {
+                            min: 0,
+                            stepSize: 1,
+                            max: 4
+                          }
                       }
                   },
                    onClick: graphClickEvent
@@ -56,25 +61,11 @@
                   const firstPoint = array[0];
                   var label = myChart.data.labels[firstPoint.index];
                   var value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
-                  alert(label+value);
+                  location.href = 'http://127.0.0.1:8000/dashboard/'+label;
+
               }
           }
 
-
-          // $("#myChart").click(
-          //   function(evt){
-          //     var activepoints = myChart.etElementsAtEvent(evt);
-          //     if (activepoints.length>0) {
-          //         // const firstPoint = points[0];
-          //         // var label = myChart.data.labels[firstPoint.index];
-          //         // var value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
-          //         alert("hola")
-          //     }else{
-          //       alert('no')
-          //     }
-          //   }
-          // )
-      // });
         </script>
     </div>
 
@@ -108,13 +99,30 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+
+                        ticks: {
+                          min: 0,
+                          stepSize: 1,
+                          max: 4
+                        }
                     }
                 },
                 responsive: true,
-            maintainAspectRatio: false,
+                maintainAspectRatio: false,
+                onClick: graphClickEvent
             }
         });
+
+        function graphClickEvent(event, array){
+            if(array.length>0){
+                const firstPoint = array[0];
+                var label = myChart.data.labels[firstPoint.index];
+                var value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+                location.href = 'http://127.0.0.1:8000/dashboard/'+label;
+
+            }
+        }
       </script>
 
     </div>
