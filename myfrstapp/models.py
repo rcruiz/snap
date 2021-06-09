@@ -4,6 +4,7 @@ from django.db import models
 class proyectos(models.Model):
     usuario= models.CharField(max_length=50, null=False)
     url_proyecto = models.CharField(max_length=100, null=False)
+    url_name=models.CharField(max_length=100, null=False)
     name_proyecto = models.CharField(max_length=100, null=False)
     nombre_zip=models.CharField(max_length=100, null=True)
     nivel=models.CharField(max_length=50, null=False)

@@ -14,6 +14,7 @@
 
     <div class="dashboard">
       <canvas id="myChart" width="0.5" height="0.5"></canvas>
+      <input type="hidden" id="myVar" name="variable" value="{{ name_zip }}">
       <script>
 
         // jQuery(function(){
@@ -55,13 +56,15 @@
 
               }
           });
-
+          var myVar = document.getElementById("myVar").value;
           function graphClickEvent(event, array){
               if(array.length>0){
                   const firstPoint = array[0];
                   var label = myChart.data.labels[firstPoint.index];
                   var value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
-                  location.href = 'http://127.0.0.1:8000/dashboard/'+label;
+                  var str=label+"-"+myVar
+                  location.href = 'http://127.0.0.1:8000/dashboard/'+str;
+
 
               }
           }

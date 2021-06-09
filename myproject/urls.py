@@ -31,8 +31,9 @@ urlpatterns = [
     path('signup', views.signup),
     path('logout', views.logout_user),
     path('projects', views.show_projects),
+    path('project/<str:name>', views.show_project),
     path('dashboard', views.dashboard),
-    path('dashboard/<str:level>', views.dashboard_level),
+    path('dashboard/<str:tag>', views.dashboard_level),
     path('admin/', admin.site.urls),
 
 

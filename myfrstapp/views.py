@@ -15,6 +15,7 @@ from statistics import mean
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import zipfile
+import urllib
 import csv
 
 
@@ -65,6 +66,10 @@ def principal(request):
 def info(request):
 
     return (render(request, 'contact.html'))
+def show_project(request, name):
+    if request.user.is_authenticated:
+        data =  proyectos.objects.filter(usuario=request.user.username,name_proyecto=name)
+        return(render(request, 'result.html',{'proyecto':list(data)[0], 'flag_url':True}))
 
 
 @csrf_exempt
@@ -75,26 +80,38 @@ def dashboard(request):
         if tipo.objects.get(usuario=request.user.username).tipo_usuario =='Estudiante':
             flag_estudiante=True
         if request.method=='GET':
+            name_zip=None
             datos= calcular_datos(request,None)
         else:
             try:
-                datos=calcular_datos(request,request.POST['name_zip'])
+                name_zip=request.POST['name_zip']
+                datos=calcular_datos(request,name_zip)
+
             except:
                 data1=calcular_datos(request,request.POST['name_zip1'])
                 data2=calcular_datos(request,request.POST['name_zip2'])
-                print(data1)
                 return (render(request, 'dashboard_comparing.html', {'data1':data1, 'data2':data2, 'zip1':request.POST['name_zip1'],'zip2':request.POST['name_zip2']}))
 
-        return (render(request, 'dashboard.html', {'data':datos, 'flag_estudiante':flag_estudiante}))
+        return (render(request, 'dashboard.html', {'data':datos, 'flag_estudiante':flag_estudiante,'name_zip':name_zip}))
+
 
     else:
 
         return (render(request, 'dashboard.html'))
 
 @csrf_exempt
-def dashboard_level(request, level):
+def dashboard_level(request, tag):
+    level=tag.split('-')[0]
+    print(level)
+    zip=tag.split('-')[1]
+    print(zip)
+    print(request.user.username)
+    if  zip=="None":
+        print("hola")
+        data =  proyectos.objects.filter(usuario=request.user.username,nivel=level, nombre_zip= None)
+    else:
+        data =  proyectos.objects.filter(usuario=request.user.username,nivel=level, nombre_zip= zip)
 
-    data =  proyectos.objects.filter(usuario=request.user.username,nivel=level)
     print(data)
     return (render(request, 'dashboard_level.html',{'user_projects': data}))
 
@@ -137,6 +154,7 @@ def analyze(request):
         if request.method=='POST':
             flag_url=True
             level,data,name_proyect = calcular_nivel(request.POST['url'])
+            print(urllib.parse.unquote(request.POST['url']))
             new_proyect={'url_proyecto':request.POST['url'], 'nivel': level,
             'condicionales':data[0], 'sincronizacion':data[1], 'control_flujo':data[2], 'abstraccion':data[3],'paralelismo':data[4],
             'categorias':data[5],'interactividad':data[6],'name_proyecto':name_proyect}
@@ -283,9 +301,11 @@ def calcular_datos(request,zip):
 def analyze_save_project(request):
 
     level,data,name_proyect=calcular_nivel(request.POST['url'])
+    name=urllib.parse.unquote(name_proyect)
+    url_name="http://127.0.0.1:8000/project/"+name_proyect
     new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
     condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-    categorias=data[5],interactividad=data[6],name_proyecto=name_proyect)
+    categorias=data[5],interactividad=data[6],name_proyecto=name, url_name=url_name)
     new_proyect.save()
     return new_proyect
 
@@ -308,9 +328,12 @@ def save_puntuacion_xml(archivos_xml, ruta, request, filename):
             ruta_xml=ruta+'/'+xml
             puntuacion,data = calcular_puntuacion(ruta_xml)
             level=switch_nivel.get(puntuacion)
-            new_proyect=proyectos(usuario=request.user.username,name_proyecto=proyecto,url_proyecto=ruta_xml, nivel= level,
+
+            name=urllib.parse.unquote(name_proyect)
+            url_name="http://127.0.0.1:8000/project/"+proyecto
+            new_proyect=proyectos(usuario=request.user.username,name_proyecto=name,url_proyecto=ruta_xml, nivel= level,
             condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-            categorias=data[5],interactividad=data[6],nombre_zip=filename)
+            categorias=data[5],interactividad=data[6],nombre_zip=filename,url_name=url_name)
             new_proyect.save()
             print(level)
 
