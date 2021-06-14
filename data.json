@@ -3,2065 +3,1418 @@
         {
             "sprite": 1,
             "script": 1,
-            "block": "reportDifference",
+            "block": "receiveGo",
             "num_block": 1
         },
         {
             "sprite": 1,
             "script": 1,
-            "block": "doReport",
+            "block": "hide",
             "num_block": 2
         },
         {
             "sprite": 1,
-            "script": 1,
-            "block": "reportSum",
+            "script": 2,
+            "block": "show",
             "num_block": 3
         },
         {
-            "sprite": 1,
-            "script": 1,
-            "block": "reportNewList",
+            "sprite": 2,
+            "script": 3,
+            "block": "receiveGo",
+            "num_block": 4
+        },
+        {
+            "sprite": 2,
+            "script": 3,
+            "block": "doSwitchToCostume",
             "num_block": 5
         },
         {
-            "sprite": 1,
+            "sprite": 2,
             "script": 3,
-            "block": "reportDifference",
+            "block": "clear",
             "num_block": 6
         },
         {
-            "sprite": 1,
+            "sprite": 2,
             "script": 3,
-            "block": "doReport",
+            "block": "show",
             "num_block": 7
         },
         {
-            "sprite": 1,
+            "sprite": 2,
             "script": 3,
-            "block": "reportSum",
+            "block": "hide",
             "num_block": 8
         },
         {
-            "sprite": 1,
-            "script": 3,
-            "block": "reportNewList",
+            "sprite": 2,
+            "script": 4,
+            "block": "doSwitchToCostume",
+            "num_block": 9
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "receiveOnClone",
             "num_block": 10
         },
         {
-            "sprite": 1,
-            "script": 4,
-            "block": "reportProduct",
+            "sprite": 2,
+            "script": 5,
+            "block": "doForever",
             "num_block": 11
         },
         {
-            "sprite": 1,
+            "sprite": 2,
             "script": 5,
-            "block": "reportDifference",
+            "block": "doIf",
             "num_block": 12
         },
         {
-            "sprite": 1,
+            "sprite": 2,
             "script": 5,
-            "block": "reportDifference",
+            "block": "reportAnd",
             "num_block": 13
         },
         {
-            "sprite": 1,
+            "sprite": 2,
             "script": 5,
-            "block": "doReport",
+            "block": "reportTouchingObject",
             "num_block": 14
         },
         {
-            "sprite": 1,
-            "script": 6,
-            "block": "reportDifference",
+            "sprite": 2,
+            "script": 5,
+            "block": "reportMouseDown",
+            "num_block": 15
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "doIf",
+            "num_block": 16
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "reportEquals",
             "num_block": 17
         },
         {
-            "sprite": 1,
-            "script": 6,
-            "block": "reportDifference",
-            "num_block": 18
-        },
-        {
-            "sprite": 1,
-            "script": 6,
-            "block": "doReport",
+            "sprite": 2,
+            "script": 5,
+            "block": "doIfElse",
             "num_block": 19
         },
         {
-            "sprite": 1,
+            "sprite": 2,
+            "script": 5,
+            "block": "reportEquals",
+            "num_block": 20
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "setEffect",
+            "num_block": 22
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "setEffect",
+            "num_block": 23
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "doSwitchToCostume",
+            "num_block": 24
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "setEffect",
+            "num_block": 25
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "reportSum",
+            "num_block": 26
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "setEffect",
+            "num_block": 28
+        },
+        {
+            "sprite": 2,
+            "script": 5,
+            "block": "doSwitchToCostume",
+            "num_block": 30
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "receiveGo",
+            "num_block": 31
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 32
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doForever",
+            "num_block": 33
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIfElse",
+            "num_block": 34
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportEquals",
+            "num_block": 35
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIfElse",
+            "num_block": 37
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportTouchingObject",
+            "num_block": 38
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSwitchToCostume",
+            "num_block": 39
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIf",
+            "num_block": 40
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportMouseDown",
+            "num_block": 41
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIfElse",
+            "num_block": 42
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportEquals",
+            "num_block": 43
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 45
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 46
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 47
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 48
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doWaitUntil",
+            "num_block": 49
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportNot",
+            "num_block": 50
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportMouseDown",
+            "num_block": 51
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSwitchToCostume",
+            "num_block": 52
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIfElse",
+            "num_block": 53
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportTouchingObject",
+            "num_block": 54
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSwitchToCostume",
+            "num_block": 55
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIf",
+            "num_block": 56
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportMouseDown",
+            "num_block": 57
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doIfElse",
+            "num_block": 58
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportEquals",
+            "num_block": 59
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 61
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 62
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 63
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSetVar",
+            "num_block": 64
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doWaitUntil",
+            "num_block": 65
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportNot",
+            "num_block": 66
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "reportMouseDown",
+            "num_block": 67
+        },
+        {
+            "sprite": 3,
+            "script": 6,
+            "block": "doSwitchToCostume",
+            "num_block": 68
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "receiveGo",
+            "num_block": 69
+        },
+        {
+            "sprite": 4,
             "script": 7,
             "block": "doSetVar",
-            "num_block": 22
+            "num_block": 70
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doForever",
+            "num_block": 71
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doIfElse",
+            "num_block": 72
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "reportTouchingObject",
+            "num_block": 73
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doSwitchToCostume",
+            "num_block": 74
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doIf",
+            "num_block": 75
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "reportMouseDown",
+            "num_block": 76
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doBroadcast",
+            "num_block": 77
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doWaitUntil",
+            "num_block": 78
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "reportNot",
+            "num_block": 79
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "reportMouseDown",
+            "num_block": 80
+        },
+        {
+            "sprite": 4,
+            "script": 7,
+            "block": "doSwitchToCostume",
+            "num_block": 81
+        },
+        {
+            "sprite": 4,
+            "script": 8,
+            "block": "receiveMessage",
+            "num_block": 82
+        },
+        {
+            "sprite": 4,
+            "script": 9,
+            "block": "doWait",
+            "num_block": 83
+        },
+        {
+            "sprite": 5,
+            "script": 10,
+            "block": "receiveGo",
+            "num_block": 84
+        },
+        {
+            "sprite": 5,
+            "script": 10,
+            "block": "setXPosition",
+            "num_block": 85
+        },
+        {
+            "sprite": 5,
+            "script": 10,
+            "block": "doForever",
+            "num_block": 86
+        },
+        {
+            "sprite": 5,
+            "script": 11,
+            "block": "setYPosition",
+            "num_block": 87
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "receiveGo",
+            "num_block": 88
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "doForever",
+            "num_block": 89
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "doIfElse",
+            "num_block": 90
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportEquals",
+            "num_block": 91
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "clearEffects",
+            "num_block": 93
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "changeScale",
+            "num_block": 94
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportProduct",
+            "num_block": 95
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportDifference",
+            "num_block": 96
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportSum",
+            "num_block": 97
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportProduct",
+            "num_block": 98
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportTouchingObject",
+            "num_block": 99
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "getScale",
+            "num_block": 100
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "doIf",
+            "num_block": 101
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportAnd",
+            "num_block": 102
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportTouchingObject",
+            "num_block": 103
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportMouseDown",
+            "num_block": 104
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "doUntil",
+            "num_block": 105
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportNot",
+            "num_block": 106
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportMouseDown",
+            "num_block": 107
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "setScale",
+            "num_block": 108
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "setXPosition",
+            "num_block": 109
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportMouseX",
+            "num_block": 110
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "doIf",
+            "num_block": 111
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportGreaterThan",
+            "num_block": 112
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "xPosition",
+            "num_block": 113
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "setXPosition",
+            "num_block": 114
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "doIf",
+            "num_block": 115
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "reportLessThan",
+            "num_block": 116
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "xPosition",
+            "num_block": 117
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "setXPosition",
+            "num_block": 118
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "playSound",
+            "num_block": 119
+        },
+        {
+            "sprite": 5,
+            "script": 12,
+            "block": "setEffect",
+            "num_block": 120
+        },
+        {
+            "sprite": 5,
+            "script": 13,
+            "block": "receiveMessage",
+            "num_block": 121
+        },
+        {
+            "sprite": 5,
+            "script": 13,
+            "block": "setYPosition",
+            "num_block": 122
+        },
+        {
+            "sprite": 5,
+            "script": 14,
+            "block": "receiveMessage",
+            "num_block": 123
+        },
+        {
+            "sprite": 5,
+            "script": 14,
+            "block": "setXPosition",
+            "num_block": 124
+        },
+        {
+            "sprite": 5,
+            "script": 14,
+            "block": "reportSum",
+            "num_block": 125
+        },
+        {
+            "sprite": 5,
+            "script": 14,
+            "block": "reportDifference",
+            "num_block": 126
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "receiveGo",
+            "num_block": 128
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "doForever",
+            "num_block": 129
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "doSetVar",
+            "num_block": 130
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "reportRound",
+            "num_block": 131
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "reportProduct",
+            "num_block": 132
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "reportDifference",
+            "num_block": 133
+        },
+        {
+            "sprite": 5,
+            "script": 15,
+            "block": "xPosition",
+            "num_block": 134
+        },
+        {
+            "sprite": 5,
+            "script": 16,
+            "block": "clear",
+            "num_block": 135
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "receiveOnClone",
+            "num_block": 136
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "doIf",
+            "num_block": 137
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "reportEquals",
+            "num_block": 138
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "getCostumeIdx",
+            "num_block": 139
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "doIf",
+            "num_block": 140
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "reportEquals",
+            "num_block": 141
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "getCostumeIdx",
+            "num_block": 142
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "doForever",
+            "num_block": 143
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "doIfElse",
+            "num_block": 144
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "reportTouchingObject",
+            "num_block": 145
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "setEffect",
+            "num_block": 146
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "doIf",
+            "num_block": 147
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "reportMouseDown",
+            "num_block": 148
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "doBroadcast",
+            "num_block": 149
+        },
+        {
+            "sprite": 6,
+            "script": 17,
+            "block": "setEffect",
+            "num_block": 150
+        },
+        {
+            "sprite": 6,
+            "script": 18,
+            "block": "receiveGo",
+            "num_block": 151
+        },
+        {
+            "sprite": 6,
+            "script": 19,
+            "block": "receiveMessage",
+            "num_block": 152
+        },
+        {
+            "sprite": 6,
+            "script": 19,
+            "block": "doWait",
+            "num_block": 153
+        },
+        {
+            "sprite": 6,
+            "script": 19,
+            "block": "doSetVar",
+            "num_block": 154
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "receiveMessage",
+            "num_block": 155
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "doSetVar",
+            "num_block": 156
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "doSwitchToCostume",
+            "num_block": 157
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "createClone",
+            "num_block": 158
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "doSwitchToCostume",
+            "num_block": 159
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "createClone",
+            "num_block": 160
+        },
+        {
+            "sprite": 6,
+            "script": 20,
+            "block": "doSwitchToCostume",
+            "num_block": 161
+        },
+        {
+            "sprite": 6,
+            "script": 21,
+            "block": "receiveMessage",
+            "num_block": 162
+        },
+        {
+            "sprite": 6,
+            "script": 21,
+            "block": "removeClone",
+            "num_block": 163
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "receiveGo",
+            "num_block": 164
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "setXPosition",
+            "num_block": 165
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "doForever",
+            "num_block": 166
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "doSetVar",
+            "num_block": 167
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "reportRound",
+            "num_block": 168
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "reportProduct",
+            "num_block": 169
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "reportDifference",
+            "num_block": 170
+        },
+        {
+            "sprite": 7,
+            "script": 22,
+            "block": "xPosition",
+            "num_block": 171
+        },
+        {
+            "sprite": 7,
+            "script": 23,
+            "block": "yPosition",
+            "num_block": 172
+        },
+        {
+            "sprite": 7,
+            "script": 24,
+            "block": "yPosition",
+            "num_block": 173
+        },
+        {
+            "sprite": 7,
+            "script": 25,
+            "block": "changeYPosition",
+            "num_block": 174
+        },
+        {
+            "sprite": 7,
+            "script": 26,
+            "block": "setYPosition",
+            "num_block": 175
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "receiveGo",
+            "num_block": 176
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "doForever",
+            "num_block": 177
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "doIfElse",
+            "num_block": 178
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportEquals",
+            "num_block": 179
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "clearEffects",
+            "num_block": 181
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "changeScale",
+            "num_block": 182
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportProduct",
+            "num_block": 183
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportDifference",
+            "num_block": 184
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportSum",
+            "num_block": 185
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportProduct",
+            "num_block": 186
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportTouchingObject",
+            "num_block": 187
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "getScale",
+            "num_block": 188
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "doIf",
+            "num_block": 189
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportAnd",
+            "num_block": 190
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportTouchingObject",
+            "num_block": 191
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportMouseDown",
+            "num_block": 192
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "doUntil",
+            "num_block": 193
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportNot",
+            "num_block": 194
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportMouseDown",
+            "num_block": 195
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "setScale",
+            "num_block": 196
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "setXPosition",
+            "num_block": 197
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportMouseX",
+            "num_block": 198
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "doIf",
+            "num_block": 199
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportGreaterThan",
+            "num_block": 200
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "xPosition",
+            "num_block": 201
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "setXPosition",
+            "num_block": 202
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "doIf",
+            "num_block": 203
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "reportLessThan",
+            "num_block": 204
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "xPosition",
+            "num_block": 205
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "setXPosition",
+            "num_block": 206
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "playSound",
+            "num_block": 207
+        },
+        {
+            "sprite": 7,
+            "script": 27,
+            "block": "setEffect",
+            "num_block": 208
+        },
+        {
+            "sprite": 7,
+            "script": 28,
+            "block": "yPosition",
+            "num_block": 209
+        },
+        {
+            "sprite": 7,
+            "script": 29,
+            "block": "setYPosition",
+            "num_block": 210
+        },
+        {
+            "sprite": 7,
+            "script": 30,
+            "block": "receiveMessage",
+            "num_block": 211
+        },
+        {
+            "sprite": 7,
+            "script": 30,
+            "block": "setXPosition",
+            "num_block": 212
+        },
+        {
+            "sprite": 7,
+            "script": 31,
+            "block": "receiveMessage",
+            "num_block": 213
+        },
+        {
+            "sprite": 7,
+            "script": 31,
+            "block": "setXPosition",
+            "num_block": 214
+        },
+        {
+            "sprite": 7,
+            "script": 31,
+            "block": "reportDifference",
+            "num_block": 215
+        },
+        {
+            "sprite": 7,
+            "script": 31,
+            "block": "reportDifference",
+            "num_block": 216
+        },
+        {
+            "sprite": 7,
+            "script": 32,
+            "block": "changeXPosition",
+            "num_block": 218
+        },
+        {
+            "sprite": 7,
+            "script": 33,
+            "block": "setYPosition",
+            "num_block": 219
+        },
+        {
+            "sprite": 7,
+            "script": 33,
+            "block": "reportMouseY",
+            "num_block": 220
+        },
+        {
+            "sprite": 7,
+            "script": 33,
+            "block": "setYPosition",
+            "num_block": 221
+        },
+        {
+            "sprite": 7,
+            "script": 34,
+            "block": "setScale",
+            "num_block": 222
         }
     ],
     "variables": [
         {
-            "variable": "best analogies",
+            "variable": "_oldy",
             "number_var": 1
         },
         {
-            "variable": "possibilities left to explore",
+            "variable": "_oldy",
             "number_var": 2
+        },
+        {
+            "variable": "my variable",
+            "number_var": 3
+        },
+        {
+            "variable": "Color",
+            "number_var": 4
+        },
+        {
+            "variable": "colourshow?",
+            "number_var": 5
+        },
+        {
+            "variable": "_COLOR",
+            "number_var": 6
+        },
+        {
+            "variable": "_BRUSH",
+            "number_var": 7
+        },
+        {
+            "variable": "_BR",
+            "number_var": 8
+        },
+        {
+            "variable": "Popup",
+            "number_var": 9
+        },
+        {
+            "variable": "eraser?",
+            "number_var": 10
         }
     ],
     "block-definition": [
         {
-            "name": "Open this in a new tab",
+            "name": "render",
             "number": 1
         },
         {
-            "name": "for %'i' = %'start' to %'end' %'action'",
+            "name": "draw picker",
             "number": 2
         },
         {
-            "name": "if %'test' then %'true' else %'false'",
+            "name": "draw picker",
             "number": 3
-        },
-        {
-            "name": "set pen color to r: %'r' g: %'g' b: %'b'",
-            "number": 4
-        },
-        {
-            "name": "square of distance from features %'features 1' to %'features 2'",
-            "number": 5
-        },
-        {
-            "name": "magnitude of %'features'",
-            "number": 6
-        },
-        {
-            "name": "dot product %'list 1' %'list 2'",
-            "number": 7
-        },
-        {
-            "name": "cosine similarity %'list 1' %'list 2'",
-            "number": 8
-        },
-        {
-            "name": "Snap! version of closest word to %'target features' except %'exceptions' and report progress %'report progress'",
-            "number": 9
-        },
-        {
-            "name": "distance from features %'features 1' to %'features 2'",
-            "number": 10
-        },
-        {
-            "name": "average %'list1' and %'list 2'",
-            "number": 11
-        },
-        {
-            "name": "mean distance of %'word' to %'words' $nl using %'distance measure' in language %'language'",
-            "number": 12
-        },
-        {
-            "name": "%'#' map %'function' over %'lists'",
-            "number": 13
-        },
-        {
-            "name": "%'#' for each %'item' of %'data' %'action'",
-            "number": 14
-        },
-        {
-            "name": "average of each item %'list'",
-            "number": 15
-        },
-        {
-            "name": "map %'function' across each item in %'data lists'",
-            "number": 16
-        },
-        {
-            "name": "Euclidean distance between %'point 1' and %'point 2' using JavaScript",
-            "number": 17
-        },
-        {
-            "name": "combine with %'function' items of %'data'",
-            "number": 18
-        },
-        {
-            "name": "cosine similarity %'list 1' %'list 2' JavaScript version",
-            "number": 19
-        },
-        {
-            "name": "for each %'item' of %'data' %'action'",
-            "number": 20
-        },
-        {
-            "name": "Open help page",
-            "number": 21
-        },
-        {
-            "name": "set default language to %'language'",
-            "number": 22
-        },
-        {
-            "name": "all words in language %'language' with features",
-            "number": 23
-        },
-        {
-            "name": "closest word to %'features' $nl in language %'language' $nl not including %'exceptions' $nl and do as words are found %'when word found' $nl with distance measure %'distance measure'",
-            "number": 24
-        },
-        {
-            "name": "location of %'word' in language %'language'",
-            "number": 25
-        },
-        {
-            "name": "set pen color to h: %'h' s: %'s' v: %'v'",
-            "number": 26
-        },
-        {
-            "name": "HSV color",
-            "number": 27
-        },
-        {
-            "name": "label %'text' of size %'size'",
-            "number": 28
-        },
-        {
-            "name": "repeat text %'text' %'n' times",
-            "number": 29
-        },
-        {
-            "name": "display word %'word' in language %'language' with size %'size' and zoom by %'zoom'",
-            "number": 30
-        },
-        {
-            "name": "closest word to %'features' $nl in language %'language' $nl not including %'exceptions'",
-            "number": 31
-        },
-        {
-            "name": "features of %'word' in language %'language'",
-            "number": 32
-        },
-        {
-            "name": "wait for word embeddings in language %'language' $nl or use this word embeddings url %'url'",
-            "number": 33
-        },
-        {
-            "name": "Load words to features in language %'language' then %'do when loaded' $nl use this URL instead of default %'url'",
-            "number": 34
-        },
-        {
-            "name": "let %'var' be %'value'",
-            "number": 35
-        },
-        {
-            "name": "empty? %'data'",
-            "number": 36
-        },
-        {
-            "name": "closest words to %'features' in language %'language' $nl and include distances %'include distances'",
-            "number": 37
-        },
-        {
-            "name": "closest words to %'features' in language %'language' $nl and include distances %'include distances' $nl do with result %'process result'",
-            "number": 38
-        },
-        {
-            "name": "average features of each word %'words' in language %'language'",
-            "number": 39
-        },
-        {
-            "name": "map %'reporter' on each element of %'list 1' and %'list 2'",
-            "number": 40
-        },
-        {
-            "name": "get features of sentences %'sentences' $nl then do with result %'process result'",
-            "number": 41
-        },
-        {
-            "name": "features of sentence %'sentence'",
-            "number": 42
-        },
-        {
-            "name": "tokenize %'sentence' $nl then do with result %'process result'",
-            "number": 43
-        },
-        {
-            "name": "tokenize %'sentence'",
-            "number": 44
-        },
-        {
-            "name": "features of sentences %'sentences'",
-            "number": 45
-        },
-        {
-            "name": "features of word %'word' in language %'language'",
-            "number": 46
-        },
-        {
-            "name": "call eCraft2Learn reporter %'reporter name' with %'inputs'",
-            "number": 47
-        },
-        {
-            "name": "load tensorflow",
-            "number": 48
-        },
-        {
-            "name": "Answer %'question' from %'passage' $nl process answers with %'answers receiver' $nl and if there is error %'handle error'",
-            "number": 49
-        },
-        {
-            "name": "Answer question %'question' using this passage %'passage'",
-            "number": 50
-        },
-        {
-            "name": "Get up to 5 answers to question %'question' from passage %'passage'",
-            "number": 51
-        },
-        {
-            "name": "Wikipedia summary of covid-19 from 6 April 2020",
-            "number": 52
-        },
-        {
-            "name": "inform %'message' with title %'title'",
-            "number": 53
-        },
-        {
-            "name": "Load eCraft2Learn library",
-            "number": 54
-        },
-        {
-            "name": "Try to load ecraft2learn library",
-            "number": 55
-        },
-        {
-            "name": "run eCraft2Learn command %'command name' with %'inputs'",
-            "number": 56
-        },
-        {
-            "name": "$arrowUp %'word'",
-            "number": 57
-        },
-        {
-            "name": "$arrowDown %'features'",
-            "number": 58
-        },
-        {
-            "name": "Open web page %'url'",
-            "number": 59
-        },
-        {
-            "name": "setting %'which'",
-            "number": 60
-        },
-        {
-            "name": "set flag %'which' to %'tf'",
-            "number": 61
-        },
-        {
-            "name": "set value %'which' to %'value'",
-            "number": 62
-        },
-        {
-            "name": "reverse %'data'",
-            "number": 63
-        },
-        {
-            "name": "remove duplicates from %'data'",
-            "number": 64
-        },
-        {
-            "name": "sort %'data' ordering with %'function'",
-            "number": 65
-        },
-        {
-            "name": "assoc %'key' %'a-list'",
-            "number": 66
-        },
-        {
-            "name": "%'#' for each %'item' of %'data' %'action'",
-            "number": 67
-        },
-        {
-            "name": "multimap %'function' over %'lists'",
-            "number": 68
-        },
-        {
-            "name": "zip %'lists'",
-            "number": 69
-        },
-        {
-            "name": "%'x'",
-            "number": 70
-        },
-        {
-            "name": "make analogies %'words' with score less than %'threshold' $nl in language %'language'",
-            "number": 71
-        },
-        {
-            "name": "Find analogies among %'number of words' words near %'word' $nl keeping those with a score less than %'threshold' $nl in language %'language'",
-            "number": 72
-        },
-        {
-            "name": "select %'k' of %'n'",
-            "number": 73
         }
     ],
-    "Open this in a new tab": [],
-    "for %'i' = %'start' to %'end' %'action'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "reportGreaterThan"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportLessThan"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportGreaterThan"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doUntil"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "doChangeVar"
-        }
-    ],
-    "if %'test' then %'true' else %'false'": [
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        }
-    ],
-    "set pen color to r: %'r' g: %'g' b: %'b'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "square of distance from features %'features 1' to %'features 2'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportPower"
-        },
-        {
-            "block": "reportDifference"
-        }
-    ],
-    "magnitude of %'features'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportMonadic"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportPower"
-        }
-    ],
-    "dot product %'list 1' %'list 2'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportProduct"
-        }
-    ],
-    "cosine similarity %'list 1' %'list 2'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reportProduct"
-        }
-    ],
-    "Snap! version of closest word to %'target features' except %'exceptions' and report progress %'report progress'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doSetVar"
-        },
+    "render": [
         {
             "block": "doWarp"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportNot"
-        },
-        {
-            "block": "reportListContainsItem"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "doThink"
-        },
-        {
-            "block": "reportJoinWords"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportLessThan"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "distance from features %'features 1' to %'features 2'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportMonadic"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportPower"
-        },
-        {
-            "block": "reportDifference"
-        }
-    ],
-    "average %'list1' and %'list 2'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reportSum"
-        }
-    ],
-    "mean distance of %'word' to %'words' $nl using %'distance measure' in language %'language'": [
-        {
-            "block": "doChangeVar"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reportListLength"
-        }
-    ],
-    "%'#' map %'function' over %'lists'": [
-        {
-            "block": "doWarp"
-        },
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        }
-    ],
-    "%'#' for each %'item' of %'data' %'action'": [
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doUntil"
-        },
-        {
-            "block": "reportListIsEmpty"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "doChangeVar"
-        }
-    ],
-    "average of each item %'list'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportListLength"
-        }
-    ],
-    "map %'function' across each item in %'data lists'": [
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "evaluate"
-        }
-    ],
-    "Euclidean distance between %'point 1' and %'point 2' using JavaScript": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "combine with %'function' items of %'data'": [
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportCDR"
-        }
-    ],
-    "cosine similarity %'list 1' %'list 2' JavaScript version": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "for each %'item' of %'data' %'action'": [
-        {
-            "block": "doUntil"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportCDR"
-        }
-    ],
-    "Open help page": [],
-    "set default language to %'language'": [],
-    "all words in language %'language' with features": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "closest word to %'features' $nl in language %'language' $nl not including %'exceptions' $nl and do as words are found %'when word found' $nl with distance measure %'distance measure'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "location of %'word' in language %'language'": [
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reportListItem"
-        }
-    ],
-    "set pen color to h: %'h' s: %'s' v: %'v'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "HSV color": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "label %'text' of size %'size'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "repeat text %'text' %'n' times": [
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "reportLessThan"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportJoinWords"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportJoinWords"
-        },
-        {
-            "block": "reportDifference"
-        }
-    ],
-    "display word %'word' in language %'language' with size %'size' and zoom by %'zoom'": [
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "reportStringSize"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "reportListItem"
         },
         {
             "block": "gotoXY"
         },
         {
-            "block": "reportListItem"
+            "block": "doRepeat"
         },
         {
-            "block": "reportStringSize"
+            "block": "doRepeat"
+        },
+        {
+            "block": "createClone"
+        },
+        {
+            "block": "changeXPosition"
+        },
+        {
+            "block": "createClone"
+        },
+        {
+            "block": "doRepeat"
+        },
+        {
+            "block": "changeXPosition"
+        },
+        {
+            "block": "setXPosition"
+        },
+        {
+            "block": "changeYPosition"
+        }
+    ],
+    "draw picker": [
+        {
+            "block": "doWarp"
+        },
+        {
+            "block": "doSetVar"
+        },
+        {
+            "block": "xPosition"
         },
         {
             "block": "gotoXY"
         },
         {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        }
-    ],
-    "closest word to %'features' $nl in language %'language' $nl not including %'exceptions'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "features of %'word' in language %'language'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "wait for word embeddings in language %'language' $nl or use this word embeddings url %'url'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "doWaitUntil"
-        }
-    ],
-    "Load words to features in language %'language' then %'do when loaded' $nl use this URL instead of default %'url'": [],
-    "let %'var' be %'value'": [
-        {
-            "block": "doSetVar"
-        }
-    ],
-    "empty? %'data'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportNewList"
-        }
-    ],
-    "closest words to %'features' in language %'language' $nl and include distances %'include distances'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doWaitUntil"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "closest words to %'features' in language %'language' $nl and include distances %'include distances' $nl do with result %'process result'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "average features of each word %'words' in language %'language'": [
-        {
-            "block": "reportTextSplit"
-        },
-        {
-            "block": "reportListLength"
-        },
-        {
-            "block": "reportMap"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportKeep"
-        },
-        {
-            "block": "reifyPredicate"
-        },
-        {
-            "block": "reportGreaterThan"
-        },
-        {
-            "block": "reportListLength"
-        },
-        {
-            "block": "reportCombine"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportQuotient"
-        }
-    ],
-    "map %'reporter' on each element of %'list 1' and %'list 2'": [
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "reportCDR"
-        }
-    ],
-    "get features of sentences %'sentences' $nl then do with result %'process result'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "features of sentence %'sentence'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doWaitUntil"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "tokenize %'sentence' $nl then do with result %'process result'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "tokenize %'sentence'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doWaitUntil"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "features of sentences %'sentences'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "doWaitUntil"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "features of word %'word' in language %'language'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "call eCraft2Learn reporter %'reporter name' with %'inputs'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "load tensorflow": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "doWaitUntil"
-        }
-    ],
-    "Answer %'question' from %'passage' $nl process answers with %'answers receiver' $nl and if there is error %'handle error'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "Answer question %'question' using this passage %'passage'": [
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "reportListIsEmpty"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        }
-    ],
-    "Get up to 5 answers to question %'question' from passage %'passage'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportBoolean"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportMap"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doWaitUntil"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "Wikipedia summary of covid-19 from 6 April 2020": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "inform %'message' with title %'title'": [],
-    "Load eCraft2Learn library": [
-        {
-            "block": "doWaitUntil"
-        }
-    ],
-    "Try to load ecraft2learn library": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "run eCraft2Learn command %'command name' with %'inputs'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "$arrowUp %'word'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "$arrowDown %'features'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "Open web page %'url'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "setting %'which'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "set flag %'which' to %'tf'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "set value %'which' to %'value'": [
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "reportJSFunction"
-        }
-    ],
-    "reverse %'data'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doWarp"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportNewList"
-        }
-    ],
-    "remove duplicates from %'data'": [
-        {
-            "block": "doWarp"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
+            "block": "setSize"
         },
         {
             "block": "doIfElse"
         },
         {
-            "block": "reportListContainsItem"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportCDR"
-        }
-    ],
-    "sort %'data' ordering with %'function'": [
-        {
-            "block": "doDeclareVariables"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportMap"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doUntil"
-        },
-        {
-            "block": "reportListIsEmpty"
-        },
-        {
-            "block": "doAddToList"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doDeleteFromList"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportNot"
-        },
-        {
-            "block": "reportListIsEmpty"
-        },
-        {
-            "block": "doAddToList"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doDeleteFromList"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyScript"
-        },
-        {
-            "block": "doIf"
-        },
-        {
             "block": "reportEquals"
         },
         {
-            "block": "reportNewList"
+            "block": "setColor"
         },
         {
-            "block": "doReport"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "evaluate"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportCDR"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "doRun"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "evaluate"
-        }
-    ],
-    "assoc %'key' %'a-list'": [
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportEquals"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCDR"
-        }
-    ],
-    "multimap %'function' over %'lists'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportMap"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "evaluate"
-        }
-    ],
-    "zip %'lists'": [
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportListIsEmpty"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportCONS"
-        },
-        {
-            "block": "reportMap"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportMap"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportCDR"
-        }
-    ],
-    "%'x'": [
-        {
-            "block": "doReport"
-        }
-    ],
-    "make analogies %'words' with score less than %'threshold' $nl in language %'language'": [
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doForEach"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "doIfElse"
-        },
-        {
-            "block": "reportLessThan"
-        },
-        {
-            "block": "doAddToList"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doIf"
-        },
-        {
-            "block": "reportLessThan"
-        },
-        {
-            "block": "doAddToList"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doChangeVar"
-        },
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportMonadic"
-        },
-        {
-            "block": "reportMonadic"
-        },
-        {
-            "block": "reportProduct"
-        }
-    ],
-    "Find analogies among %'number of words' words near %'word' $nl keeping those with a score less than %'threshold' $nl in language %'language'": [
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportNumbers"
-        },
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reportListLength"
+            "block": "setPenHSVA"
         },
         {
             "block": "reportSum"
         },
         {
-            "block": "reportDifference"
+            "block": "setColor"
         },
         {
-            "block": "reportListLength"
+            "block": "down"
         },
         {
-            "block": "reportSum"
+            "block": "doRepeat"
         },
         {
-            "block": "reportDifference"
+            "block": "changeXPosition"
         },
         {
-            "block": "reportListLength"
+            "block": "doIf"
         },
         {
-            "block": "reportSum"
+            "block": "reportEquals"
         },
         {
-            "block": "reportListLength"
+            "block": "changePenHSVA"
         },
         {
-            "block": "doSetVar"
+            "block": "up"
         },
         {
-            "block": "reportConcatenatedLists"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportNewList"
-        },
-        {
-            "block": "doSetVar"
-        },
-        {
-            "block": "reifyPredicate"
-        },
-        {
-            "block": "reportLessThan"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "reportListItem"
-        },
-        {
-            "block": "doReport"
-        }
-    ],
-    "select %'k' of %'n'": [
-        {
-            "block": "doReport"
-        },
-        {
-            "block": "reportQuotient"
-        },
-        {
-            "block": "reportCombine"
-        },
-        {
-            "block": "reportNumbers"
-        },
-        {
-            "block": "reportSum"
-        },
-        {
-            "block": "reportDifference"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportProduct"
-        },
-        {
-            "block": "reportCombine"
-        },
-        {
-            "block": "reportNumbers"
-        },
-        {
-            "block": "reifyReporter"
-        },
-        {
-            "block": "reportProduct"
+            "block": "setXPosition"
         }
     ]
 }

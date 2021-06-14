@@ -328,8 +328,7 @@ def save_puntuacion_xml(archivos_xml, ruta, request, filename):
             ruta_xml=ruta+'/'+xml
             puntuacion,data = calcular_puntuacion(ruta_xml)
             level=switch_nivel.get(puntuacion)
-
-            name=urllib.parse.unquote(name_proyect)
+            name=urllib.parse.unquote(proyecto)
             url_name="http://127.0.0.1:8000/project/"+proyecto
             new_proyect=proyectos(usuario=request.user.username,name_proyecto=name,url_proyecto=ruta_xml, nivel= level,
             condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
@@ -386,6 +385,7 @@ def parse_url(url):
     s3=s[2]
     url=s1+s2+'/'+s3
     print(url)
+    print(s3)
     return url,s3
 
 def calcular_puntuacion(url):
