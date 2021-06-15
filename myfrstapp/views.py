@@ -65,7 +65,7 @@ def principal(request):
 
 def info(request):
 
-    return (render(request, 'contact.html'))
+    return (render(request, 'index.html'))
 def show_project(request, name):
     if request.user.is_authenticated:
         data =  proyectos.objects.filter(usuario=request.user.username,name_proyecto=name)
@@ -380,7 +380,8 @@ def switch_puntuacion(media):
 
 def parse_url(url):
     s=url.split('=')
-    s1='https://snap.berkeley.edu/projects/'
+    #s1='https://snap.berkeley.edu/projects/'
+    s1='https://cloud.snap.berkeley.edu/projects/'
     s2=s[1].split('&')[0]
     s3=s[2]
     url=s1+s2+'/'+s3
