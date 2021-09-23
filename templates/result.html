@@ -10,7 +10,7 @@
         <div class="divTableHeading">
         <div class="divTableRow">
           <div class="divTableHead">Secciones</div>
-          <div class="divTableHead">Puntuacion</div>
+          <div class="divTableHead">Puntuación</div>
         </div>
         </div>
         <div class="divTableBody">
@@ -18,22 +18,25 @@
               <div class="divTableCell">Condicionales</div><div class="divTableCell">{{proyecto.condicionales}}</div>
             </div>
             <div class="divTableRow">
-              <div class="divTableCell">Sincronizacion</div><div class="divTableCell">{{proyecto.sincronizacion}}</div>
+              <div class="divTableCell">Sincronización</div><div class="divTableCell">{{proyecto.sincronizacion}}</div>
             </div>
             <div class="divTableRow">
               <div class="divTableCell">Control de flujo</div><div class="divTableCell">{{proyecto.control_flujo}}</div>
             </div>
             <div class="divTableRow">
-              <div class="divTableCell">Abstraccion</div><div class="divTableCell">{{proyecto.abstraccion}}</div>
+              <div class="divTableCell">Abstracción</div><div class="divTableCell">{{proyecto.abstraccion}}</div>
             </div>
             <div class="divTableRow">
               <div class="divTableCell">Paralelismo</div><div class="divTableCell">{{proyecto.paralelismo}}</div>
             </div>
             <div class="divTableRow">
-              <div class="divTableCell">Categorias</div><div class="divTableCell">{{proyecto.categorias}}</div>
+              <div class="divTableCell">Categorías</div><div class="divTableCell">{{proyecto.categorias}}</div>
             </div>
             <div class="divTableRow">
               <div class="divTableCell">Interactividad</div><div class="divTableCell">{{proyecto.interactividad}}</div>
+            </div>
+            <div class="divTableRow">
+              <div class="divTableCell">Representación de datos</div><div class="divTableCell">{{proyecto.datos}}</div>
             </div>
         </div>
         </div>
@@ -75,6 +78,8 @@
         <div class="divTableHead">Interactividad</div>
         <div class="divTableHead">Paralelismo</div>
         <div class="divTableHead">Sincronizacion</div>
+
+        <div class="divTableHead">Representación de datos</div>
       </div>
       </div>
       <div class="divTableBody">
@@ -89,6 +94,7 @@
             <div class="divTableCell">{{proyect.interactividad}}</div>
             <div class="divTableCell">{{proyect.paralelismo}}</div>
             <div class="divTableCell">{{proyect.sincronizacion}}</div>
+            <div class="divTableCell">{{proyect.datos}}</div>
           </div>
           {%endfor%}
         </div>

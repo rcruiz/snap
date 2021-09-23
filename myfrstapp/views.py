@@ -18,6 +18,51 @@ import zipfile
 import urllib
 import csv
 
+switch_datos={"forward": 1,
+      "turn": 1,
+      "turnLeft": 1,
+      "setHeading": 1,
+      " doFaceTowards": 1,
+      "gotoXY": 1,
+      "doGoToObject": 1,
+      "doGlide": 1,
+      "changeXPosition": 1,
+      "setXPosition": 1,
+      "changeYPosition": 1,
+      "setYPosition": 1,
+      "bounceOffEdge": 1,
+      "doSwitchToCostume": 1,
+      "doWearNextCostume": 1,
+      "doSwitchToCostume": 1,
+      "reportGetImageAttribute": 1,
+      "reportNewCostumeStretched": 1,
+      "reportNewCostume": 1,
+      "changeEffect": 1,
+      "changeScale": 1,
+      "setScale": 1,
+      "doSetVar": 2,
+      "doChangeVar": 1,
+      "doShowVar": 2,
+      "doHideVar": 2,
+      "doDeclareVariables": 2,
+      "reportNewList": 3,
+      "reportCONS": 3,
+      "reportListItem": 3,
+      "reportCDR": 3,
+      "reportListLength": 3,
+      "reportListIndex": 3,
+      "reportListContainsItem": 3,
+      "reportListIsEmpty": 3,
+      "reportMap": 3,
+      "reportKeep": 3,
+      "reportFindFirst": 3,
+      "reportCombine": 3,
+      "reportConcatenatedLists": 3,
+      "doAddToList": 3,
+      "doDeleteFromList": 3,
+      "doInsertInList": 3,
+      "doReplaceInList": 3,
+      "reportNumbers": 3}
 
 
 switch_nivel= {
@@ -97,7 +142,7 @@ def dashboard(request):
 
     else:
 
-        return (render(request, 'dashboard.html'))
+        return (render(request, 'please-login.html'))
 
 @csrf_exempt
 def dashboard_level(request, tag):
@@ -126,7 +171,10 @@ def analyze(request):
         if request.method=='POST':
             if estudiante:
                 flag_url=True
-                new_proyect=analyze_save_project(request)
+                try:
+                    new_proyect=analyze_save_project(request)
+                except:
+                    return(render(request, 'error_analizar.html'))
                 return(render(request, 'result.html',{'proyecto':new_proyect, 'flag_url':flag_url}))
             else:
                 try:
@@ -134,11 +182,11 @@ def analyze(request):
                     flag_url=True
                     return(render(request, 'result.html',{'proyecto':new_proyect,'flag_url':flag_url}))
                 except:
-
-                        print('hola')
                         flag_url=False
-                        user_projects,filename=analyze_save_zip(request)
-                        print('adios')
+                        try:
+                            user_projects,filename=analyze_save_zip(request)
+                        except:
+                            return(render(request, 'error_analizar_zip.html'))
                         return(render(request, 'result.html',{'filename':filename,'proyecto':user_projects,'flag_url':flag_url}))
 
 
@@ -153,11 +201,14 @@ def analyze(request):
         #no estas logeado
         if request.method=='POST':
             flag_url=True
-            level,data,name_proyect = calcular_nivel(request.POST['url'])
+            try:
+                level,data,name_proyect = calcular_nivel(request.POST['url'])
+            except:
+                return(render(request, 'error_analizar.html'))
             print(urllib.parse.unquote(request.POST['url']))
             new_proyect={'url_proyecto':request.POST['url'], 'nivel': level,
             'condicionales':data[0], 'sincronizacion':data[1], 'control_flujo':data[2], 'abstraccion':data[3],'paralelismo':data[4],
-            'categorias':data[5],'interactividad':data[6],'name_proyecto':name_proyect}
+            'categorias':data[5],'interactividad':data[6],'datos':data[7], 'name_proyecto':name_proyect}
             return(render(request, 'result.html',{'proyecto':new_proyect, 'flag_url':flag_url}))
         else:
             return (render(request, 'analyze-estudiantes.html'))
@@ -249,7 +300,7 @@ def show_projects(request):
                 if not user_projects:
                     flag_url= True
         else:
-            flag_url= True
+            return render(request,"please-login.html")
     else:
         if request.method=='POST':
             user_projects =  proyectos.objects.filter(usuario=request.user.username,nombre_zip=request.POST['name_zip'])
@@ -259,12 +310,12 @@ def show_projects(request):
                 response['Content-Disposition'] = 'attachment; filename="file.csv"'
                 writer = csv.writer(response)
                 header = ['Name zip', 'Name project', 'Nivel', 'Abstraccion', 'Condicionales', 'Categorias', 'Control flujo',
-                'Interactividad', 'Paralelismo', 'Sincronizacion']
+                'Interactividad', 'Paralelismo', 'Sincronizacion', 'Datos']
                 writer.writerow(header)
                 for project in user_projects:
                     writer.writerow([project.nombre_zip, project.name_proyecto, project.nivel, project.abstraccion,
                     project.condicionales, project.categorias, project.control_flujo, project.interactividad,
-                    project.paralelismo, project.sincronizacion])
+                    project.paralelismo, project.sincronizacion,project.datos])
                 return response
             else:
                 msj='That file zip doesnt exit. Try again.'
@@ -302,10 +353,10 @@ def analyze_save_project(request):
 
     level,data,name_proyect=calcular_nivel(request.POST['url'])
     name=urllib.parse.unquote(name_proyect)
-    url_name="http://127.0.0.1:8000/project/"+name_proyect
+    url_name="http://prodriguezmartin.pythonanywhere.com/project/"+name_proyect
     new_proyect=proyectos(usuario=request.user.username, url_proyecto=request.POST['url'], nivel= level,
     condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-    categorias=data[5],interactividad=data[6],name_proyecto=name, url_name=url_name)
+    categorias=data[5],interactividad=data[6],datos=data[7],name_proyecto=name, url_name=url_name)
     new_proyect.save()
     return new_proyect
 
@@ -328,11 +379,11 @@ def save_puntuacion_xml(archivos_xml, ruta, request, filename):
             ruta_xml=ruta+'/'+xml
             puntuacion,data = calcular_puntuacion(ruta_xml)
             level=switch_nivel.get(puntuacion)
-            name=urllib.parse.unquote(proyecto)
-            url_name="http://127.0.0.1:8000/project/"+proyecto
-            new_proyect=proyectos(usuario=request.user.username,name_proyecto=name,url_proyecto=ruta_xml, nivel= level,
+            name=urllib.parse.quote(proyecto)
+            url_name="http://prodriguezmartin.pythonanywhere.com/project/"+name
+            new_proyect=proyectos(usuario=request.user.username,name_proyecto=proyecto,url_proyecto=ruta_xml, nivel= level,
             condicionales=data[0], sincronizacion=data[1], control_flujo=data[2], abstraccion=data[3],paralelismo=data[4],
-            categorias=data[5],interactividad=data[6],nombre_zip=filename,url_name=url_name)
+            categorias=data[5],interactividad=data[6],datos=data[7],nombre_zip=filename,url_name=url_name)
             new_proyect.save()
             print(level)
 
@@ -346,8 +397,8 @@ def save_extract_zip(myfile,request):
     filename=filezip.split('.')[0]
     print(filename)
     # open and extract all files in the zip OJOOOOOO PETARA EN pythonanywhere
-    ruta_zip="/home/paula/dir-practica/myproject"+uploaded_file_url
-    ruta_extraccion = "/home/paula/dir-practica/myproject/media/"+request.user.username + '&' + filename
+    ruta_zip="/home/prodriguezmartin/snap" + uploaded_file_url
+    ruta_extraccion = "/home/prodriguezmartin/snap/media/"+request.user.username + '&' + filename
     print(ruta_extraccion)
     password = None
     z = zipfile.ZipFile(ruta_zip, "r")
@@ -398,7 +449,8 @@ def calcular_puntuacion(url):
     para=paralelismo()
     categ=categorias()
     interactividad=puntuacion_interactividad()
-    data=(condicionales,sincronizacion,flujo,abst,para,categ,interactividad)
+    datos=puntuacion_representacion_datos()
+    data=(condicionales,sincronizacion,flujo,abst,para,categ,interactividad,datos)
     media=mean(data)
     print("La media es: " + str(media))
     print("El nivel es " + str(switch_puntuacion(media)))
@@ -445,7 +497,7 @@ def paralelismo():
     puntuacion_avanzado = 0
     basic = False
     med = False
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
     #calculamos los scripts y sprites
     n_script = number_script(data)
@@ -471,7 +523,7 @@ def paralelismo():
 def puntuacion_condicionales():
     mayor= 0
     actual = 0
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
     #creamos un switch que nos de la  puntuación correspondiente
     for element in data['sprites']:
@@ -484,10 +536,10 @@ def puntuacion_condicionales():
     return mayor
 
 def puntuacion_representacion_datos():
-
-    with open('data1.json') as file:
-        switch_datos = json.load(file)
-
+    mayor=0
+    actual=0
+    with open('/home/prodriguezmartin/snap/data.json') as file2:
+        data = json.load(file2)
     for element in data['sprites']:
         actual = switch_datos.get(element['block'])
         if actual!= None and mayor < actual :
@@ -500,7 +552,7 @@ def puntuacion_representacion_datos():
 def puntuacion_interactividad():
     mayor= 0
     actual = 0
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
     #creamos un switch que nos de la  puntuación correspondiente
 
@@ -517,7 +569,7 @@ def puntuacion_interactividad():
 def puntuacion_sincronizacion():
     mayor= 0
     actual = 0
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
     #creamos un switch que nos de la  puntuación correspondiente
     switch_sincronizacion = {
@@ -547,7 +599,7 @@ def control_flujo():
     mayor= 0
     actual = 0
     puntuacion_bajo =0
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
 
     if blocks_script(data):
@@ -571,7 +623,7 @@ def control_flujo():
 
 
 def abstraccion():
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
 
     n_script = number_script(data)
@@ -592,9 +644,9 @@ def abstraccion():
 
 def categorias():
     dicc_categorias = {"motion": False, "looks": False, "sound": False, "pen": False, "control": False, "sensing": False, "operators": False, "variables": False}
-    with open('data.json') as file:
+    with open('/home/prodriguezmartin/snap/data.json') as file:
         data = json.load(file)
-    with open('all.json') as file2:
+    with open('/home/prodriguezmartin/snap/all.json') as file2:
         diccionario_all= json.load(file2)
 
     for element in data['sprites']:
@@ -736,7 +788,7 @@ def parse_xml(url):
                             elif self.inVariables:
                                 try:
                                     value = attrs.getValue('name')
-                                    print(value)
+                                    #print(value)
                                     self.numberVariables=self.numberVariables+1
                                     self.data['variables'].append({
                                         'variable': value,
@@ -766,7 +818,6 @@ def parse_xml(url):
                     elif self.inBlockDef:
                         if name == 'block':
                             self.inBlockCustom=True
-                            print(self.value)
                             try:
                                 self.data[self.value].append({
                                     #'name': self.value,
@@ -800,9 +851,8 @@ def parse_xml(url):
             #salimos del xml por lo que volcamos la información recogida en un JSON
             if name == 'project':
                 self.inProject=False
-                with open('data.json', 'w') as file:
+                with open('/home/prodriguezmartin/snap/data.json', 'w') as file:
                     json.dump(self.data, file, indent=4)
-                print(self.data)
 
             elif self.inProject:
                 if name == 'stage':

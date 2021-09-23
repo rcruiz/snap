@@ -15,6 +15,7 @@ class proyectos(models.Model):
     paralelismo = models.IntegerField(null=False, default=0)
     categorias = models.IntegerField(null=False, default=0)
     interactividad = models.IntegerField(null=False, default=0)
+    datos =  models.IntegerField(null=False, default=0)
 
 
 class tipo(models.Model):

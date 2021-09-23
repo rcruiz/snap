@@ -1,5 +1,4 @@
-{
-      "forward": 1,
+{"forward": 1,
       "turn": 1,
       "turnLeft": 1,
       "setHeading": 1,
@@ -43,6 +42,4 @@
       "doDeleteFromList": 3,
       "doInsertInList": 3,
       "doReplaceInList": 3,
-      "reportNumbers": 3,
-
-  }
+      "reportNumbers": 3}
